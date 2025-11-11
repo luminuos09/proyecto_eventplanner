@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="presentacion.controllers.FormularioEventoController"
+            stylesheets="@../styles.css"> 
+    
+    <!-- Encabezado -->
+    <top>
+        <VBox alignment="CENTER" spacing="10" styleClass="header">
+            <padding>
+                <Insets top="20" bottom="20" left="20" right="20"/>
+            </padding>
+            <Label text="Nuevo Evento" styleClass="title"/>
+            <Label text="Complete todos los campos del formulario" styleClass="subtitle"/>
+        </VBox>
+    </top>
+    
+    <!-- Formulario -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+            <VBox spacing="15" styleClass="form-container">
+                <padding>
+                    <Insets top="20" bottom="20" left="40" right="40"/>
+                </padding>
+                
+                <!-- Nombre del Evento -->
+                <VBox spacing="5">
+                    <Label text="Nombre del Evento *" styleClass="label-field"/>
+                    <TextField fx:id="txtNombre" promptText="Ej: Conferencia de IA 2025" 
+                               styleClass="text-field"/>
+                </VBox>
+                
+                <!-- Descripción -->
+                <VBox spacing="5">
+                    <Label text="Descripción (mínimo 10 caracteres) *" styleClass="label-field"/>
+                    <TextArea fx:id="txtDescripcion" 
+                              promptText="Describe el evento..."
+                              wrapText="true" prefRowCount="3"
+                              styleClass="text-area"/>
+                </VBox>
+                
+                <!-- Tipo de Evento -->
+                <VBox spacing="5">
+                    <Label text="Tipo de Evento *" styleClass="label-field"/>
+                    <ComboBox fx:id="cboTipoEvento" 
+                              promptText="Seleccione el tipo"
+                              prefWidth="300"
+                              styleClass="combo-box"/>
+                </VBox>
+                
+                <!-- Fechas -->
+                <HBox spacing="20">
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label text="Fecha y Hora de Inicio *" styleClass="label-field"/>
+                        <DatePicker fx:id="dpFechaInicio" 
+                                   promptText="Seleccione fecha"
+                                   styleClass="date-picker"/>
+                        <TextField fx:id="txtHoraInicio" 
+                                  promptText="HH:mm (ej: 10:00)"
+                                  styleClass="text-field"/>
+                    </VBox>
+                    
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label text="Fecha y Hora de Fin *" styleClass="label-field"/>
+                        <DatePicker fx:id="dpFechaFin" 
+                                   promptText="Seleccione fecha"
+                                   styleClass="date-picker"/>
+                        <TextField fx:id="txtHoraFin" 
+                                  promptText="HH:mm (ej: 18:00)"
+                                  styleClass="text-field"/>
+                    </VBox>
+                </HBox>
+                
+                <!-- Ubicación -->
+                <VBox spacing="5">
+                    <Label text="Ubicación *" styleClass="label-field"/>
+                    <TextField fx:id="txtUbicacion" 
+                              promptText="Ej: Auditorio Principal"
+                              styleClass="text-field"/>
+                </VBox>
+                
+                <!-- Capacidad -->
+                <VBox spacing="5">
+                    <Label text="Capacidad Máxima *" styleClass="label-field"/>
+                    <TextField fx:id="txtCapacidad" 
+                              promptText="Número de personas"
+                              styleClass="text-field"/>
+                </VBox>
+                
+                <!-- Precios -->
+                <HBox spacing="20">
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label text="Precio General (COP) *" styleClass="label-field"/>
+                        <TextField fx:id="txtPrecioGeneral" 
+                                  promptText="0 = Gratis"
+                                  styleClass="text-field"/>
+                    </VBox>
+                    
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label text="Precio VIP (COP)" styleClass="label-field"/>
+                        <TextField fx:id="txtPrecioVIP" 
+                                  promptText="Dejar vacío = mismo precio"
+                                  styleClass="text-field"/>
+                    </VBox>
+                </HBox>
+                
+                <!-- Email Organizador -->
+                <VBox spacing="5">
+                    <Label text="Email del Organizador *" styleClass="label-field"/>
+                    <TextField fx:id="txtEmailOrganizador" 
+                              promptText="organizador@email.com"
+                              styleClass="text-field"/>
+                </VBox>
+                
+                <!-- Botones -->
+                <HBox spacing="20" alignment="CENTER">
+                    <padding>
+                        <Insets top="20"/>
+                    </padding>
+                    
+                    <Button text=" Crear Evento" 
+                            onAction="#crearEvento"
+                            styleClass="btn-primary"/>
+                    
+                    <Button text="✗ Cancelar" 
+                            onAction="#cancelar"
+                            styleClass="btn-secondary"/>
+                </HBox>
+                
+                <!-- Mensaje de estado -->
+                <Label fx:id="lblMensaje" 
+                       styleClass="label-mensaje"
+                       wrapText="true"
+                       visible="false"/>
+                
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

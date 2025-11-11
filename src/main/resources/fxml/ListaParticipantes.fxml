@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="presentacion.controllers.ListaParticipantesController"
+            prefHeight="700.0" prefWidth="1000.0" styleClass="root" stylesheets="@../styles.css">
+    
+    <!-- ENCABEZADO -->
+    <top>
+        <VBox styleClass="header" alignment="CENTER" spacing="10">
+            <padding>
+                <Insets top="30" bottom="30" left="20" right="20"/>
+            </padding>
+            
+            <Label text="📋 LISTA DE PARTICIPANTES" styleClass="title">
+                <font>
+                    <Font name="Poppins Bold" size="42"/>
+                </font>
+            </Label>
+            
+            <Label text="Todos los participantes registrados en el sistema" styleClass="subtitle">
+                <font>
+                    <Font name="Poppins" size="16"/>
+                </font>
+            </Label>
+        </VBox>
+    </top>
+    
+    <!-- CONTENIDO CENTRAL -->
+    <center>
+        <VBox spacing="20">
+            <padding>
+                <Insets top="30" bottom="30" left="50" right="50"/>
+            </padding>
+            
+            <!-- Barra de búsqueda -->
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <TextField fx:id="txtBuscar" promptText="🔍 Buscar por nombre o email..." 
+                        prefWidth="400" onKeyReleased="#buscar">
+                    <font>
+                        <Font name="Poppins" size="14"/>
+                    </font>
+                </TextField>
+                
+                <Button text="🔄 ACTUALIZAR" styleClass="btn-secondary" 
+                        onAction="#actualizarLista">
+                    <font>
+                        <Font name="Poppins SemiBold" size="13"/>
+                    </font>
+                </Button>
+                
+                <Label fx:id="lblTotal" text="Total: 0 participantes" 
+                    style="-fx-font-size: 14px; -fx-text-fill: #5a189a; -fx-font-weight: bold;">
+                    <font>
+                        <Font name="Poppins" size="14"/>
+                    </font>
+                </Label>
+            </HBox>
+            
+            <!-- Tabla de participantes -->
+            <TableView fx:id="tablaParticipantes" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="100"/>
+                    <TableColumn fx:id="colNombre" text="Nombre" prefWidth="200"/>
+                    <TableColumn fx:id="colEmail" text="Email" prefWidth="200"/>
+                    <TableColumn fx:id="colTelefono" text="Teléfono" prefWidth="130"/>
+                    <TableColumn fx:id="colEmpresa" text="Empresa" prefWidth="150"/>
+                    <TableColumn fx:id="colCargo" text="Cargo" prefWidth="120"/>
+                    <TableColumn fx:id="colVip" text="VIP" prefWidth="50"/>
+                </columns>
+                
+                <placeholder>
+                    <Label text="📭 No hay participantes registrados" 
+                        style="-fx-font-size: 16px; -fx-text-fill: #9d4edd;">
+                        <font>
+                            <Font name="Poppins" size="16"/>
+                        </font>
+                    </Label>
+                </placeholder>
+            </TableView>
+            
+            <!-- Botones de acción -->
+            <HBox spacing="15" alignment="CENTER">
+                <Button text="➕ NUEVO PARTICIPANTE" styleClass="btn-primary" 
+                        onAction="#abrirFormularioNuevo">
+                    <font>
+                        <Font name="Poppins SemiBold" size="14"/>
+                    </font>
+                </Button>
+                
+                <Button text="👁️ VER DETALLE" styleClass="btn-primary" 
+                        onAction="#verDetalle">
+                    <font>
+                        <Font name="Poppins SemiBold" size="14"/>
+                    </font>
+                </Button>
+                
+                <Button text="⬅️ VOLVER" styleClass="btn-salir" 
+                        onAction="#volver">
+                    <font>
+                        <Font name="Poppins" size="14"/>
+                    </font>
+                </Button>
+            </HBox>
+        </VBox>
+    </center>
+    
+    <!-- PIE DE PÁGINA -->
+    <bottom>
+        <HBox styleClass="footer" alignment="CENTER">
+            <padding>
+                <Insets top="15" bottom="15"/>
+            </padding>
+            <Label text="Event Planner © 2025 - Sistema de Gestión de Eventos" styleClass="footer-text">
+                <font>
+                    <Font name="Poppins" size="12"/>
+                </font>
+            </Label>
+        </HBox>
+    </bottom>
+    
+</BorderPane>

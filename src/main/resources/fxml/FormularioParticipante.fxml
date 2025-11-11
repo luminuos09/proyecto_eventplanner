@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="800.0" prefWidth="900.0" styleClass="root" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentacion.controllers.FormularioParticipanteController">
+    
+    <!-- ENCABEZADO -->
+    <top>
+        <VBox alignment="CENTER" spacing="10" styleClass="header">
+            <padding>
+                <Insets bottom="30" left="20" right="20" top="30" />
+            </padding>
+           <children>
+               
+               <Label styleClass="title" text="➕REGISTRAR PARTICIPANTE" textFill="#7b02db">
+                   <font>
+                       <Font name="System Bold" size="42.0" />
+                   </font>
+               </Label>
+               
+               <Label styleClass="subtitle" text="Complete los datos del participante">
+                   <font>
+                       <Font name="Poppins" size="16" />
+                   </font>
+               </Label>
+           </children>
+        </VBox>
+    </top>
+    
+    <!-- CONTENIDO CENTRAL -->
+    <center>
+        <ScrollPane fitToHeight="true" fitToWidth="true" styleClass="scroll-pane">
+           <content>
+               <VBox alignment="TOP_CENTER" spacing="20">
+                   <padding>
+                       <Insets bottom="30" left="50" right="50" top="30" />
+                   </padding>
+                  <children>
+                      
+                      <!-- Formulario -->
+                      <VBox maxWidth="700" spacing="20" styleClass="form-container">
+                          <padding>
+                              <Insets bottom="30" left="40" right="40" top="30" />
+                          </padding>
+                         <children>
+                             
+                             <!-- SECCIÓN: DATOS PERSONALES -->
+                             <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #7b2cbf;" text="📋 DATOS PERSONALES">
+                                 <font>
+                                     <Font name="Poppins Bold" size="20" />
+                                 </font>
+                             </Label>
+                             
+                             <Separator />
+                             
+                             <!-- Nombre completo -->
+                             <VBox spacing="5">
+                                <children>
+                                    <Label styleClass="label-field" text="Nombre completo *" />
+                                    <TextField fx:id="txtNombre" promptText="Ej: Juan Carlos Pérez López">
+                                        <font>
+                                            <Font name="Poppins" size="14" />
+                                        </font>
+                                    </TextField>
+                                </children>
+                             </VBox>
+                             
+                             <!-- Email -->
+                             <VBox spacing="5">
+                                <children>
+                                    <Label styleClass="label-field" text="Email *" />
+                                    <TextField fx:id="txtEmail" promptText="ejemplo@correo.com">
+                                        <font>
+                                            <Font name="Poppins" size="14" />
+                                        </font>
+                                    </TextField>
+                                </children>
+                             </VBox>
+                             
+                             <!-- Teléfono -->
+                             <VBox spacing="5">
+                                <children>
+                                    <Label styleClass="label-field" text="Teléfono *" />
+                                    <TextField fx:id="txtTelefono" promptText="Ej: +57 300 123 4567">
+                                        <font>
+                                            <Font name="Poppins" size="14" />
+                                        </font>
+                                    </TextField>
+                                </children>
+                             </VBox>
+                             
+                             <!-- SECCIÓN: INFORMACIÓN PROFESIONAL -->
+                             <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #7b2cbf;" text="📋 INFORMACIÓN PROFESIONAL">
+                                 <padding>
+                                     <Insets top="20" />
+                                 </padding>
+                                 <font>
+                                     <Font name="Poppins Bold" size="20" />
+                                 </font>
+                             </Label>
+                             
+                             <Separator />
+                             
+                             <!-- Empresa -->
+                             <VBox spacing="5">
+                                <children>
+                                    <Label styleClass="label-field" text="Empresa / Institución" />
+                                    <TextField fx:id="txtEmpresa" promptText="Ej: Universidad Popular del Cesar">
+                                        <font>
+                                            <Font name="Poppins" size="14" />
+                                        </font>
+                                    </TextField>
+                                </children>
+                             </VBox>
+                             
+                             <!-- Cargo -->
+                             <VBox spacing="5">
+                                <children>
+                                    <Label styleClass="label-field" text="Cargo / Rol" />
+                                    <TextField fx:id="txtCargo" promptText="Ej: Estudiante de Ingeniería">
+                                        <font>
+                                            <Font name="Poppins" size="14" />
+                                        </font>
+                                    </TextField>
+                                </children>
+                             </VBox>
+                             
+                             <!-- Intereses -->
+                             <VBox spacing="5">
+                                <children>
+                                    <Label styleClass="label-field" text="Intereses / Áreas de interés" />
+                                    <TextArea fx:id="txtIntereses" prefRowCount="4" promptText="Describe tus intereses profesionales o áreas de especialización..." wrapText="true">
+                                        <font>
+                                            <Font name="Poppins" size="14" />
+                                        </font>
+                                    </TextArea>
+                                </children>
+                             </VBox>
+                             
+                             <!-- SECCIÓN: OPCIONES ADICIONALES -->
+                             <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #7b2cbf;" text="⚙️ OPCIONES ADICIONALES">
+                                 <padding>
+                                     <Insets top="20" />
+                                 </padding>
+                                 <font>
+                                     <Font name="Poppins Bold" size="20" />
+                                 </font>
+                             </Label>
+                             
+                             <Separator />
+                             
+                             <!-- CheckBox VIP -->
+                             <CheckBox fx:id="chkVip" text="⭐Marcar como Participante VIP">
+                                 <font>
+                                     <Font name="Poppins SemiBold" size="14" />
+                                 </font>
+                             </CheckBox>
+                             
+                             <Label style="-fx-text-fill: #9d4edd; -fx-font-size: 12px; -fx-font-style: italic;" text="* Campos obligatorios">
+                                 <padding>
+                                     <Insets top="10" />
+                                 </padding>
+                             </Label>
+                             
+                             <!-- Label de mensaje -->
+                             <Label fx:id="lblMensaje" styleClass="label-mensaje" visible="false" wrapText="true">
+                                 <font>
+                                     <Font name="Poppins" size="13" />
+                                 </font>
+                             </Label>
+                             
+                             <!-- Botones -->
+                             <HBox alignment="CENTER" spacing="15">
+                                 <padding>
+                                     <Insets top="20" />
+                                 </padding>
+                                <children>
+                                    
+                                    <Button onAction="#guardarParticipante" prefWidth="220" styleClass="btn-primary" text="✅ GUARDAR PARTICIPANTE">
+                                        <font>
+                                            <Font name="Poppins SemiBold" size="14" />
+                                        </font>
+                                    </Button>
+                                    
+                                    <Button onAction="#limpiarFormulario" prefWidth="200" styleClass="btn-secondary" text="📋💼🗑️ LIMPIAR FORMULARIO">
+                                        <font>
+                                            <Font name="Poppins SemiBold" size="14" />
+                                        </font>
+                                    </Button>
+                                    
+                                    <Button onAction="#volver" prefWidth="120" styleClass="btn-salir" text="⬅️ VOLVER">
+                                        <font>
+                                            <Font name="Poppins" size="14" />
+                                        </font>
+                                    </Button>
+                                </children>
+                             </HBox>
+                         </children>
+                      </VBox>
+                  </children>
+               </VBox>
+           </content>
+        </ScrollPane>
+    </center>
+    
+    <!-- PIE DE PÁGINA -->
+    <bottom>
+        <HBox alignment="CENTER" styleClass="footer">
+            <padding>
+                <Insets bottom="15" top="15" />
+            </padding>
+           <children>
+               <Label styleClass="footer-text" text="Event Planner © 2025 - Sistema de Gestión de Eventos">
+                   <font>
+                       <Font name="Poppins" size="12" />
+                   </font>
+               </Label>
+           </children>
+        </HBox>
+    </bottom>
+    
+</BorderPane>

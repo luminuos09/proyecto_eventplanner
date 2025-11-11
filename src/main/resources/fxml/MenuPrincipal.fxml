@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="presentacion.controllers.MenuPrincipalController"
+            styleClass="root">
+    
+    <!-- Encabezado -->
+    <top>
+        <VBox alignment="CENTER" spacing="10" styleClass="header">
+            <padding>
+                <Insets top="30" bottom="20" left="20" right="20"/>
+            </padding>
+            
+            <Label text="EVENT PLANNER" styleClass="title"/>
+            <Label text="Sistema de Gestión de Eventos" styleClass="subtitle"/>
+        </VBox>
+    </top>
+    
+    <!-- Contenido Principal -->
+    <center>
+        <GridPane alignment="CENTER" hgap="20" vgap="20">
+            <padding>
+                <Insets top="30" bottom="30" left="50" right="50"/>
+            </padding>
+            
+            <!-- Fila 1 -->
+            <Button text="📅Gestión de Eventos" 
+                    onAction="#abrirGestionEventos"
+                    styleClass="btn-menu"
+                    GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            
+            <Button text="👥Gestión de Participantes" 
+                    onAction="#abrirGestionParticipantes"
+                    styleClass="btn-menu"
+                    GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+            
+            <!-- Fila 2 -->
+            <Button text=" 💳Sistema de Pagos" 
+                    onAction="#abrirSistemaPagos"
+                    styleClass="btn-menu"
+                    GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            
+            <Button text="📊Reportes y Estadísticas" 
+                    onAction="#abrirReportes"
+                    styleClass="btn-menu"
+                    GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            
+            <!-- Fila 3 - Botón de salir centrado -->
+            <Button text=" Salir" 
+                    onAction="#salir"
+                    styleClass="btn-salir"
+                    GridPane.columnIndex="0" GridPane.rowIndex="2" 
+                    GridPane.columnSpan="2" GridPane.halignment="CENTER"/>
+        </GridPane>
+    </center>
+    
+    <!-- Pie de página -->
+    <bottom>
+        <VBox alignment="CENTER" spacing="5" styleClass="footer">
+            <padding>
+                <Insets top="10" bottom="10"/>
+            </padding>
+            <Label text="Universidad Popular del Cesar" styleClass="footer-text"/>
+            <Label text="Programación de Computadores II - 2025" styleClass="footer-text"/>
+        </VBox>
+    </bottom>
+</BorderPane>

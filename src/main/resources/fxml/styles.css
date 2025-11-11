@@ -1,0 +1,150 @@
+/* Importar fuentes modernas */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap');
+
+/* Fondo general */
+.root {
+    -fx-background-color: #e8d9f3;
+    -fx-font-family: 'Poppins', 'Inter', sans-serif;
+}
+
+/* Encabezado */
+.header {
+    -fx-background-color: linear-gradient(to bottom, #7b2cbf, #5a189a);
+    -fx-effect: dropshadow(gaussian, rgba(123, 44, 191, 0.4), 10, 0, 0, 2);
+}
+
+.title {
+    -fx-font-family: 'Poppins', 'Inter', sans-serif;
+    -fx-font-size: 64px;
+    -fx-font-weight: 900;
+    -fx-text-fill: white;
+}
+
+.subtitle {
+    -fx-font-size: 32px;
+    -fx-text-fill: #e0aaff;
+}
+
+/* Botones del menú */
+.btn-menu {
+    -fx-background-color: white;
+    -fx-text-fill: #5a189a;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 40px 50px;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #c77dff;
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(123, 44, 191, 0.2), 5, 0, 0, 2);
+    -fx-min-width: 250px;
+}
+
+.btn-menu:hover {
+    -fx-background-color: #9d4edd;
+    -fx-text-fill: white;
+    -fx-scale-y: 1.05;
+    -fx-scale-x: 1.05;
+    -fx-effect: dropshadow(gaussian, rgba(123, 44, 191, 0.5), 10, 0, 0, 4);
+    -fx-transition: all 0.3s ease;
+}
+
+/* Botón salir */
+.btn-salir {
+    -fx-background-color: #7b2cbf;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 15px 40px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.btn-salir:hover {
+    -fx-background-color: #5a189a;
+}
+
+/* Pie de página */
+.footer {
+    -fx-background-color: #5a189a;
+    -fx-padding: 10px;
+}
+
+.footer-text {
+    -fx-text-fill: #e0aaff;
+    -fx-font-size: 12px;
+}
+
+/* Formularios */
+.form-container {
+    -fx-background-color: white;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(123, 44, 191, 0.15), 10, 0, 0, 2);
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* Labels de campos */
+.label-field {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #5a189a;
+}
+
+/* Campos de texto */
+.text-field, .text-area, .date-picker, .combo-box {
+    -fx-font-size: 14px;
+    -fx-padding: 8px;
+    -fx-border-color: #e0aaff;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+.text-field:focused, .text-area:focused {
+    -fx-border-color: #9d4edd;
+    -fx-border-width: 2px;
+}
+
+/* Botones del formulario */
+.btn-primary {
+    -fx-background-color: #9d4edd;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 12px 30px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #7b2cbf;
+}
+
+.btn-secondary {
+    -fx-background-color: #c77dff;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 12px 30px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #9d4edd;
+}
+
+/* Mensajes */
+.label-mensaje {
+    -fx-padding: 10px;
+    -fx-background-color: #f3e8ff;
+    -fx-background-radius: 4px;
+    -fx-text-fill: #5a189a;
+}   
