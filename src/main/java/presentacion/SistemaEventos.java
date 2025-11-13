@@ -138,7 +138,7 @@ public class SistemaEventos {
                  * Información del sistema (metadata)
                  */
                 private static final String VERSION = "1.0.0";
-                private static final String FECHA_VERSION = "2025";
+                private static  String FECHA_VERSION = "2025";
                 private static final String AUTOR = "Ayner Jose Castro Benavides y Sebastian Ramos";
                 private static final String INSTITUCION = "Universidad Popular del Cesar";
                 private static final String ASIGNATURA = "Programación de Computadores II";
