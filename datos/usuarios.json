@@ -1,0 +1,60 @@
+[
+  {
+    "id": "USR1763509563208",
+    "nombreCompleto": "Administrador del Sistema",
+    "email": "admin@eventplanner.com",
+    "nombreUsuario": "admin",
+    "contrasena": "-969161597",
+    "rol": "ADMINISTRADOR",
+    "estado": "ACTIVO",
+    "fechaCreacion": "2025-11-18T18:46:03.2150111",
+    "ultimoAcceso": "2025-11-22T13:15:30.9681926",
+    "activo": true
+  },
+  {
+    "id": "USR1763559696938",
+    "nombreCompleto": "Sebastian Ramos",
+    "email": "sebasra@unicesar.edu.co",
+    "nombreUsuario": "sebasra",
+    "contrasena": "-1748329405",
+    "rol": "ORGANIZADOR",
+    "estado": "ACTIVO",
+    "fechaCreacion": "2025-11-19T08:41:36.9404358",
+    "ultimoAcceso": "2025-11-19T08:41:49.636496",
+    "activo": true
+  },
+  {
+    "id": "USR1763675988189",
+    "nombreCompleto": "Jose Castro",
+    "email": "aynerjcas@gmailcom",
+    "nombreUsuario": "aynerj",
+    "contrasena": "-1748329405",
+    "rol": "ORGANIZADOR",
+    "estado": "RECHAZADO",
+    "fechaCreacion": "2025-11-20T16:59:48.1902245",
+    "activo": true
+  },
+  {
+    "id": "USR1763689362205",
+    "nombreCompleto": "Jose Castro",
+    "email": "aynerjcastr@gmail.com",
+    "nombreUsuario": "aynerjo",
+    "contrasena": "-1748329405",
+    "rol": "ORGANIZADOR",
+    "estado": "ACTIVO",
+    "fechaCreacion": "2025-11-20T20:42:42.2166328",
+    "activo": true
+  },
+  {
+    "id": "USR1763691422780",
+    "nombreCompleto": "Maritza Benavides",
+    "email": "mabeca1205@gmail.com",
+    "nombreUsuario": "mabeca",
+    "contrasena": "-688253769",
+    "rol": "ORGANIZADOR",
+    "estado": "ACTIVO",
+    "fechaCreacion": "2025-11-20T21:17:02.7920483",
+    "ultimoAcceso": "2025-11-21T17:48:52.7687543",
+    "activo": true
+  }
+]

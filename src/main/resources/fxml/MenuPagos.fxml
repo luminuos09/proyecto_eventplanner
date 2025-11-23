@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="presentacion.controllers.MenuPagosController"
+      spacing="30" 
+      alignment="CENTER"
+      style="-fx-background-color: linear-gradient(to bottom, #a5d6a7, #c8e6c9);"
+      prefWidth="900" 
+      prefHeight="700">
+    
+    <padding>
+        <Insets top="30" right="30" bottom="20" left="20"/>
+    </padding>
+    
+    <!-- ENCABEZADO CON DEGRADADO -->
+    <VBox alignment="CENTER" spacing="10" 
+          style="-fx-background-color: linear-gradient(to bottom, #2e7d32, #43a047); -fx-background-radius: 15; -fx-padding: 30;">
+       
+        <Label text="💳Sistema de Pagos" 
+               style="-fx-text-fill: white; -fx-font-size: 42px; -fx-font-weight: bold;"/>
+        <Label text="Compra tickets, gestiona pagos y consulta tu historial" 
+               style="-fx-text-fill: #e8f5e9; -fx-font-size: 16px;"/>
+    </VBox>
+    
+    <!-- GRID DE OPCIONES -->
+    <GridPane hgap="25" vgap="25" alignment="CENTER">
+        
+        <!-- Comprar Ticket -->
+        <VBox alignment="CENTER" spacing="15"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand;"
+              prefWidth="350" prefHeight="180"
+              onMouseClicked="#comprarTicket"
+              GridPane.rowIndex="0" GridPane.columnIndex="0">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            
+            <Label text="🎫Comprar Ticket" 
+                   style="-fx-text-fill: #2e7d32; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Adquiere tu entrada para eventos" 
+                   style="-fx-text-fill: #666666; -fx-font-size: 13px; -fx-text-alignment: center;" 
+                   wrapText="true" 
+                   maxWidth="300"/>
+        </VBox>
+        
+        <!-- Mis Tickets -->
+        <VBox alignment="CENTER" spacing="15"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand;"
+              prefWidth="350" prefHeight="180"
+              onMouseClicked="#verMisTickets"
+              GridPane.rowIndex="0" GridPane.columnIndex="1">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label text="🎫Mis Tickets" 
+                   style="-fx-text-fill: #2e7d32; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Consulta tus tickets comprados" 
+                   style="-fx-text-fill: #666666; -fx-font-size: 13px; -fx-text-alignment: center;" 
+                   wrapText="true" 
+                   maxWidth="300"/>
+        </VBox>
+        
+        <!-- Historial de Pagos -->
+        <VBox alignment="CENTER" spacing="15"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand;"
+              prefWidth="350" prefHeight="180"
+              onMouseClicked="#verHistorialPagos"
+              GridPane.rowIndex="1" GridPane.columnIndex="0">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label text="📊Historial de Pagos" 
+                   style="-fx-text-fill: #2e7d32; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Revisa todas tus transacciones" 
+                   style="-fx-text-fill: #666666; -fx-font-size: 13px; -fx-text-alignment: center;" 
+                   wrapText="true" 
+                   maxWidth="300"/>
+        </VBox>
+        
+        <!-- Estadísticas -->
+        <VBox alignment="CENTER" spacing="15"
+              style="-fx-background-color: #f5f5f5; -fx-background-radius: 15; -fx-border-color: #cccccc; -fx-border-radius: 15; -fx-border-width: 2; -fx-border-style: dashed;"
+              prefWidth="350" prefHeight="180"
+              GridPane.rowIndex="1" GridPane.columnIndex="1">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label text="📈Estadísticas" 
+                   style="-fx-text-fill: #999999; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+            <Label text="Próximamente - Panel de reportes" 
+                   style="-fx-text-fill: #999999; -fx-font-size: 13px; -fx-text-alignment: center;" 
+                   wrapText="true" 
+                   maxWidth="300"/>
+        </VBox>
+    </GridPane>
+    
+    <!-- BOTÓN VOLVER -->
+    <Button text="⬅Volver a Menú Principal" 
+            onAction="#volverMenuPrincipal"
+            style="-fx-background-color: #2e7d32; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 15 40 15 40; -fx-background-radius: 25;"
+            prefWidth="300"/>
+    
+    <!-- FOOTER CON DEGRADADO -->
+    <VBox alignment="CENTER" spacing="5"
+          style="-fx-background-color: linear-gradient(to bottom, #2e7d32, #43a047); -fx-background-radius: 10; -fx-padding: 15;">
+        <Label text="Event Planner © 2025 - Sistema de Gestión de Eventos" 
+               style="-fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold;"/>
+    </VBox>
+    
+</VBox>

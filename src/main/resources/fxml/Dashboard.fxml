@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="presentacion.controllers.DashboardController"
+            fitToWidth="true"
+            style="-fx-background: #f5f5f5;"
+            prefWidth="1000" 
+            prefHeight="700">
+    
+    <VBox spacing="20" style="-fx-background-color: #f5f5f5;">
+        
+        <padding>
+            <Insets top="20" right="30" bottom="20" left="30"/>
+        </padding>
+        
+        <!-- HEADER -->
+        <HBox alignment="CENTER" style="-fx-background-color: linear-gradient(to bottom, #1565C0, #1976D2); -fx-background-radius: 10;">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <VBox alignment="CENTER" spacing="5">
+                <Label text="📊 Dashboard de Reportes" 
+                       style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;"/>
+                <Label text="Estadísticas y métricas del sistema Event Planner" 
+                       style="-fx-text-fill: white; -fx-font-size: 14px;"/>
+            </VBox>
+        </HBox>
+        
+        <!-- MÉTRICAS PRINCIPALES -->
+        <Label text="📈 Métricas Principales" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        
+        <GridPane hgap="20" vgap="20">
+            <!-- Total Eventos -->
+            <VBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: #2196F3; -fx-background-radius: 12; -fx-padding: 20;"
+                  prefWidth="260" prefHeight="140"
+                  GridPane.rowIndex="0" GridPane.columnIndex="0">
+                <Label text="📅Total Eventos" style="-fx-text-fill: white; -fx-font-size: 14px;"/>
+                <Label fx:id="lblTotalEventos" text="0" style="-fx-text-fill: white; -fx-font-size: 36px; -fx-font-weight: bold;"/>
+            </VBox>
+            
+            <!-- Total Participantes -->
+            <VBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: #4CAF50; -fx-background-radius: 12; -fx-padding: 20;"
+                  prefWidth="260" prefHeight="140"
+                  GridPane.rowIndex="0" GridPane.columnIndex="1">
+                <Label text="👥Total Participantes" style="-fx-text-fill: white; -fx-font-size: 14px;"/>
+                <Label fx:id="lblTotalParticipantes" text="0" style="-fx-text-fill: white; -fx-font-size: 36px; -fx-font-weight: bold;"/>
+            </VBox>
+            
+            <!-- Ingresos Totales -->
+            <VBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: #FF9800; -fx-background-radius: 12; -fx-padding: 20;"
+                  prefWidth="260" prefHeight="140"
+                  GridPane.rowIndex="0" GridPane.columnIndex="2">
+                <Label text="💰Ingresos Totales" style="-fx-text-fill: white; -fx-font-size: 14px;"/>
+                <Label fx:id="lblIngresosTotales" text="0" style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;"/>
+            </VBox>
+            
+            <!-- Tickets Vendidos -->
+            <VBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: #9C27B0; -fx-background-radius: 12; -fx-padding: 20;"
+                  prefWidth="260" prefHeight="140"
+                  GridPane.rowIndex="0" GridPane.columnIndex="3">
+                <Label text="🎫Tickets Vendidos" style="-fx-text-fill: white; -fx-font-size: 14px;"/>
+                <Label fx:id="lblTicketsVendidos" text="0" style="-fx-text-fill: white; -fx-font-size: 36px; -fx-font-weight: bold;"/>
+            </VBox>
+        </GridPane>
+        
+        <!-- EVENTOS DESTACADOS -->
+        <Label text="🏆 Eventos Destacados" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        
+        <HBox spacing="20">
+            <!-- Evento Más Popular -->
+            <VBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20;" HBox.hgrow="ALWAYS">
+                <Label text="🔥Evento Más Popular" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2196F3;"/>
+                <Separator/>
+                <Label fx:id="lblEventoPopularNombre" text="Sin eventos" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <Label fx:id="lblEventoPopularInfo" text="-" wrapText="true"/>
+            </VBox>
+            
+            <!-- Evento Más Rentable -->
+            <VBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20;" HBox.hgrow="ALWAYS">
+                <Label text="💵 Evento Más Rentable" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #FF9800;"/>
+                <Separator/>
+                <Label fx:id="lblEventoRentableNombre" text="Sin eventos" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <Label fx:id="lblEventoRentableInfo" text="-" wrapText="true"/>
+            </VBox>
+        </HBox>
+        
+        <!-- ESTADÍSTICAS -->
+        <Label text="📊 Estadísticas Adicionales" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        
+        <HBox spacing="20">
+            <!-- Eventos por Estado -->
+            <VBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20;" prefWidth="400">
+                <Label text="📈 Eventos por Estado" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <Separator/>
+                <TextArea fx:id="txtEventosPorEstado" editable="false" wrapText="true" prefHeight="150" 
+                          style="-fx-control-inner-background: #f5f5f5;"/>
+            </VBox>
+            
+            <!-- Métricas Adicionales -->
+            <VBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20;" HBox.hgrow="ALWAYS">
+                <Label text="📊 Métricas Adicionales" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <Separator/>
+                <HBox spacing="10">
+                    <Label text="Promedio participantes/evento:"/>
+                    <Label fx:id="lblPromedioParticipantes" text="0.0" style="-fx-font-weight: bold;"/>
+                </HBox>
+                <HBox spacing="10">
+                    <Label text="Tasa de ocupación promedio:"/>
+                    <Label fx:id="lblTasaOcupacion" text="0%" style="-fx-font-weight: bold;"/>
+                </HBox>
+                <HBox spacing="10">
+                    <Label text="Total organizadores:"/>
+                    <Label fx:id="lblTotalOrganizadores" text="0" style="-fx-font-weight: bold;"/>
+                </HBox>
+            </VBox>
+        </HBox>
+        
+        <!-- BOTONES -->
+        <HBox spacing="15" alignment="CENTER">
+            <padding>
+                <Insets top="10"/>
+            </padding>
+            
+            <Button text="🔄Actualizar Dashboard" 
+                    onAction="#actualizarDashboard"
+                    style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 12 30;"
+                    minWidth="200"/>
+            
+            <Button text="📄Ver Resumen Ejecutivo" 
+                    onAction="#verResumenEjecutivo"
+                    style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 12 30;"
+                    minWidth="200"/>
+            
+            <Button text="⬅Volver" 
+                    onAction="#volver"
+                    style="-fx-background-color: #757575; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 12 30;"
+                    minWidth="150"/>
+        </HBox>
+        
+    </VBox>
+    
+</ScrollPane>

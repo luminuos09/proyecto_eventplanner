@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="presentacion.controllers.InscripcionEventoController"
+            prefHeight="700.0" prefWidth="900.0" styleClass="root">
+    
+    <!-- ENCABEZADO -->
+    <top>
+    <!-- HEADER CON DEGRADADO MORADO -->
+    <VBox alignment="CENTER" spacing="10"
+        style="-fx-background-color: linear-gradient(to bottom, #7C3AED, #9333EA); -fx-padding: 30;">
+        <Label text="📅 Inscribir a Evento" 
+            style="-fx-text-fill: white; -fx-font-size: 36px; -fx-font-weight: bold;"/>
+        <Label text="Registra participantes en eventos disponibles" 
+            style="-fx-text-fill: #E9D5FF; -fx-font-size: 14px;"/>
+    </VBox>
+    </top>
+    
+    <!-- CONTENIDO CENTRAL -->
+    <center>
+        <ScrollPane fitToWidth="true" styleClass="scroll-pane">
+            <VBox spacing="25" alignment="TOP_CENTER">
+                <padding>
+                    <Insets top="30" bottom="30" left="50" right="50"/>
+                </padding>
+                
+                <!-- Formulario -->
+                <VBox spacing="20" styleClass="form-container" maxWidth="700">
+                    <padding>
+                        <Insets top="30" bottom="30" left="40" right="40"/>
+                    </padding>
+                    
+                    <!-- PASO 1: SELECCIONAR PARTICIPANTE -->
+                    <Label text="1.Seleccionar Participante" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #7b2cbf;"/>
+                    <Separator/>
+                    
+                    <VBox spacing="5">
+                        <Label text="Email del participante *" styleClass="label-field"/>
+                        <TextField fx:id="txtEmailParticipante" promptText="participante@ejemplo.com"/>
+                        <Button text="🔍Buscar Participante" styleClass="btn-secondary" onAction="#buscarParticipante"/>
+                    </VBox>
+                    
+                    <Label fx:id="lblParticipante" text="Ningún participante seleccionado" 
+                           style="-fx-text-fill: #9d4edd; -fx-font-style: italic;"/>
+                    
+                    <!-- PASO 2: SELECCIONAR EVENTO -->
+                    <Label text="2.Seleccionar Evento" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #7b2cbf;">
+                        <padding><Insets top="20"/></padding>
+                    </Label>
+                    <Separator/>
+                    
+                    <VBox spacing="5">
+                        <Label text="Eventos disponibles *" styleClass="label-field"/>
+                        <ComboBox fx:id="cmbEventos" promptText="Seleccione un evento" prefWidth="600"/>
+                    </VBox>
+                    
+                    <Label fx:id="lblInfoEvento" wrapText="true" 
+                           style="-fx-text-fill: #5a189a; -fx-padding: 10; -fx-background-color: #f3e8ff; -fx-background-radius: 5;"/>
+                    
+                    <!-- MENSAJE -->
+                    <Label fx:id="lblMensaje" styleClass="label-mensaje" visible="false" wrapText="true"/>
+                    
+                    <!-- BOTONES -->
+                    <HBox spacing="15" alignment="CENTER" style="-fx-padding: 20;">
+                        <Button text="✅ Inscribir" 
+                                onAction="#inscribir"
+                                style="-fx-background-color: #7C3AED; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 12 30; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                        
+                        <Button text="Limpiar" 
+                                onAction="#limpiar"
+                                style="-fx-background-color: #9333EA; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 12 30; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                        
+                        <Button text="⬅ Volver" 
+                                onAction="#volver"
+                                style="-fx-background-color: #A855F7; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 12 30; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+    
+    <!-- PIE -->
+    <bottom>
+        <HBox styleClass="footer" alignment="CENTER">
+            <padding><Insets top="15" bottom="15"/></padding>
+            <Label text="Event Planner © 2025" styleClass="footer-text"/>
+        </HBox>
+    </bottom>
+</BorderPane>

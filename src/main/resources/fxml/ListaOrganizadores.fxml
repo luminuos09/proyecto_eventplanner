@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+    Vista para listar todos los organizadores registrados
+    Controlador: ListaOrganizadoresController
+-->
+
+<VBox xmlns="http://javafx.com/javafx/17" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="presentacion.controllers.ListaOrganizadoresController"
+      spacing="20" 
+      style="-fx-background-color: #f5f5f5;"
+      prefWidth="900" 
+      prefHeight="700">
+    
+    <padding>
+        <Insets top="20" right="30" bottom="20" left="30"/>
+    </padding>
+    
+    <!-- Encabezado -->
+    <HBox alignment="CENTER" style="-fx-background-color: #7b2cbf; -fx-background-radius: 10;">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+        <VBox alignment="CENTER" spacing="5">
+            <Label text="📋Lista de Organizadores" 
+                   style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;"/>
+            <Label text="Todos los organizadores registrados en el sistema" 
+                   style="-fx-text-fill: #e0e0e0; -fx-font-size: 14px;"/>
+        </VBox>
+    </HBox>
+    
+    <!-- Panel de estadísticas -->
+    <HBox spacing="20" alignment="CENTER">
+        <VBox alignment="CENTER" spacing="5"
+              style="-fx-background-color: #2196F3; -fx-background-radius: 10; -fx-padding: 15; -fx-min-width: 200;">
+            <Label text="Total Organizadores" 
+                   style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+            <Label fx:id="lblTotalOrganizadores" 
+                   text="0" 
+                   style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;"/>
+        </VBox>
+        
+        <VBox alignment="CENTER" spacing="5"
+              style="-fx-background-color: #4CAF50; -fx-background-radius: 10; -fx-padding: 15; -fx-min-width: 200;">
+            <Label text="Eventos Creados" 
+                   style="-fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+            <Label fx:id="lblTotalEventos" 
+                   text="0" 
+                   style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;"/>
+        </VBox>
+    </HBox>
+    
+    <!-- Panel de búsqueda y filtros -->
+    <HBox spacing="15" alignment="CENTER_LEFT"
+          style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+        <Label text="🔍Buscar:" style="-fx-font-weight: bold;"/>
+        <TextField fx:id="txtBuscar" 
+                  promptText="Buscar por nombre, email u organización..." 
+                  prefWidth="400"/>
+        <Button text="🔄Actualizar" 
+                onAction="#actualizarLista"
+                style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;"/>
+    </HBox>
+    
+    <!-- Tabla de organizadores -->
+    <VBox spacing="10" 
+          style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);"
+          VBox.vgrow="ALWAYS">
+        <padding>
+            <Insets top="15" right="15" bottom="15" left="15"/>
+        </padding>
+        
+        <Label text="📊Organizadores Registrados" 
+               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #7b2cbf;"/>
+        
+        <TableView fx:id="tablaOrganizadores" 
+                   VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colId" 
+                           text="ID" 
+                           prefWidth="100"/>
+                <TableColumn fx:id="colNombre" 
+                           text="Nombre" 
+                           prefWidth="200"/>
+                <TableColumn fx:id="colEmail" 
+                           text="Email" 
+                           prefWidth="220"/>
+                <TableColumn fx:id="colTelefono" 
+                           text="Teléfono" 
+                           prefWidth="120"/>
+                <TableColumn fx:id="colOrganizacion" 
+                           text="Organización" 
+                           prefWidth="200"/>
+                <TableColumn fx:id="colDepartamento" 
+                           text="Departamento" 
+                           prefWidth="150"/>
+                <TableColumn fx:id="colExperiencia" 
+                           text="Experiencia" 
+                           prefWidth="100"/>
+                <TableColumn fx:id="colEventos" 
+                           text="Eventos" 
+                           prefWidth="80"/>
+            </columns>
+            
+            <placeholder>
+                <Label text="No hay organizadores registrados" 
+                       style="-fx-text-fill: #999999;"/>
+            </placeholder>
+        </TableView>
+    </VBox>
+    
+    <!-- Panel de detalles (se muestra al seleccionar) -->
+    <VBox fx:id="panelDetalles"
+          spacing="10" 
+          visible="false"
+          managed="false"
+          style="-fx-background-color: #e3f2fd; -fx-background-radius: 10; -fx-padding: 15;">
+        <Label text="👤Información Detallada" 
+               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1976d2;"/>
+        <TextArea fx:id="txtDetalles" 
+                 editable="false"
+                 wrapText="true"
+                 prefHeight="100"
+                 style="-fx-font-family: 'Courier New'; -fx-font-size: 12px;"/>
+    </VBox>
+    
+    <!-- Botones -->
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="⬅Volver al Menú" 
+                onAction="#volverMenu"
+                style="-fx-background-color: #7b2cbf; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 12 30 12 30;"
+                minWidth="200"/>
+    </HBox>
+    
+</VBox>

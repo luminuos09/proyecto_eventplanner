@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="presentacion.controllers.MenuParticipantesController"
+      spacing="30" 
+      alignment="CENTER"
+      style="-fx-background-color: linear-gradient(to bottom, #7252a5ff, #d9d1e8ff);"
+      prefWidth="900" 
+      prefHeight="700">
+    
+    <padding>
+        <Insets top="40" right="50" bottom="40" left="50"/>
+    </padding>
+    
+    <!-- ENCABEZADO CON DEGRADADO -->
+    <VBox alignment="CENTER" spacing="10"
+          style="-fx-background-color: linear-gradient(to bottom, #5B21B6, #7C3AED); -fx-background-radius: 15; -fx-padding: 30;">
+        <Label text="👥Gestión de Participantes" 
+               style="-fx-text-fill: white; -fx-font-size: 42px; -fx-font-weight: bold;"/>
+        <Label text="Registra, inscribe y administra participantes" 
+               style="-fx-text-fill: #f3e5f5; -fx-font-size: 16px;"/>
+    </VBox>
+    
+    <!-- GRID DE OPCIONES -->
+    <GridPane hgap="25" vgap="25" alignment="CENTER">
+        
+        <!-- FILA 1 -->
+        <!-- Registrar Participante -->
+        <VBox alignment="CENTER" spacing="15"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand;"
+              prefWidth="350" prefHeight="180"
+              onMouseClicked="#abrirFormularioParticipante"
+              GridPane.rowIndex="0" GridPane.columnIndex="0">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label text="👤Registrar Participante" 
+                   style="-fx-text-fill: #7C3AED; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Agregar un nuevo participante al sistema" 
+                   style="-fx-text-fill: #666666; -fx-font-size: 13px; -fx-text-alignment: center;" 
+                   wrapText="true" 
+                   maxWidth="300"/>
+        </VBox>
+        
+        <!-- Listar Participantes -->
+        <VBox alignment="CENTER" spacing="15"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand;"
+              prefWidth="350" prefHeight="180"
+              onMouseClicked="#listarParticipantes"
+              GridPane.rowIndex="0" GridPane.columnIndex="1">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label text="📋Listar Participantes" 
+                   style="-fx-text-fill: #7C3AED; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Ver todos los participantes registrados" 
+                   style="-fx-text-fill: #666666; -fx-font-size: 13px; -fx-text-alignment: center;" 
+                   wrapText="true" 
+                   maxWidth="300"/>
+        </VBox>
+        
+        <!-- FILA 2 -->
+        <!-- Inscribir a Evento -->
+        <VBox alignment="CENTER" spacing="15"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand;"
+              prefWidth="350" prefHeight="180"
+              onMouseClicked="#abrirInscripcionEvento"
+              GridPane.rowIndex="1" GridPane.columnIndex="0">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label text="📝Inscribir a Evento" 
+                   style="-fx-text-fill: #7C3AED; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Registrar participante en un evento" 
+                   style="-fx-text-fill: #666666; -fx-font-size: 13px; -fx-text-alignment: center;" 
+                   wrapText="true" 
+                   maxWidth="300"/>
+        </VBox>
+        
+        <!-- Cancelar Inscripción -->
+        <VBox alignment="CENTER" spacing="15"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand;"
+              prefWidth="350" prefHeight="180"
+              onMouseClicked="#cancelarInscripcion"
+              GridPane.rowIndex="1" GridPane.columnIndex="1">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label text="❌Cancelar Inscripción" 
+                   style="-fx-text-fill: #7C3AED; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Dar de baja a un participante de un evento" 
+                   style="-fx-text-fill: #666666; -fx-font-size: 13px; -fx-text-alignment: center;" 
+                   wrapText="true" 
+                   maxWidth="300"/>
+        </VBox>
+        
+        <!-- FILA 3 -->
+        <!-- Ver mis Eventos -->
+        <VBox alignment="CENTER" spacing="15"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand;"
+              prefWidth="350" prefHeight="180"
+              onMouseClicked="#verMisEventos"
+              GridPane.rowIndex="2" GridPane.columnIndex="0">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label text="📅Ver mis Eventos" 
+                   style="-fx-text-fill: #7C3AED; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Consultar eventos inscritos" 
+                   style="-fx-text-fill: #666666; -fx-font-size: 13px; -fx-text-alignment: center;" 
+                   wrapText="true" 
+                   maxWidth="300"/>
+        </VBox>
+        
+        <!-- Buscar Participantes -->
+        <VBox alignment="CENTER" spacing="15"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand;"
+              prefWidth="350" prefHeight="180"
+              onMouseClicked="#buscarParticipante"
+              GridPane.rowIndex="2" GridPane.columnIndex="1">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label text="🔍Buscar Participantes" 
+                   style="-fx-text-fill: #7C3AED; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Buscar información de un participante" 
+                   style="-fx-text-fill: #666666; -fx-font-size: 13px; -fx-text-alignment: center;" 
+                   wrapText="true" 
+                   maxWidth="300"/>
+        </VBox>
+    </GridPane>
+    
+    <!-- BOTÓN VOLVER -->
+    <Button text="⬅Volver a Menú Principal" 
+            onAction="#volverMenuPrincipal"
+            style="-fx-background-color: #7C3AED; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 15 40 15 40; -fx-background-radius: 25;"
+            prefWidth="300"/>
+    
+    <!-- FOOTER CON DEGRADADO -->
+    <VBox alignment="CENTER" spacing="5"
+          style="-fx-background-color: linear-gradient(to bottom, #5B21B6, #7C3AED); -fx-background-radius: 10; -fx-padding: 15;">
+        <Label text="Event Planner © 2025 - Sistema de Gestión de Eventos" 
+               style="-fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold;"/>
+    </VBox>
+    
+</VBox>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--
+    Formulario para registrar un nuevo organizador
+    Controlador: FormularioOrganizadorController
+-->
+
+<VBox xmlns="http://javafx.com/javafx/17" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="presentacion.controllers.FormularioOrganizadorController"
+      spacing="20" 
+      style="-fx-background-color: #f5f5f5;"
+      prefWidth="900" 
+      prefHeight="700">
+    
+    <padding>
+        <Insets top="20" right="40" bottom="20" left="40"/>
+    </padding>
+    
+    <!-- Encabezado -->
+    <HBox alignment="CENTER" style="-fx-background-color: #7b2cbf; -fx-background-radius: 10;">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+        <VBox alignment="CENTER" spacing="5">
+            <Label text="👔Registrar Organizador" 
+                   style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;"/>
+            <Label text="Complete el formulario con los datos del organizador" 
+                   style="-fx-text-fill: #e0e0e0; -fx-font-size: 14px;"/>
+        </VBox>
+    </HBox>
+    
+    <!-- Formulario -->
+    <ScrollPane fitToWidth="true" style="-fx-background: transparent;">
+        <VBox spacing="20" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+            <padding>
+                <Insets top="25" right="25" bottom="25" left="25"/>
+            </padding>
+            
+            <!-- ==================== SECCIÓN: INFORMACIÓN PERSONAL ==================== -->
+            <Label text="📝 Información Personal" 
+                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #7b2cbf;"/>
+            
+            <!-- Nombre Completo -->
+            <VBox spacing="5">
+                <Label text="Nombre completo *" 
+                       style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #7b2cbf;"/>
+                <TextField fx:id="txtNombre" 
+                          promptText="Ej: Dr. Carlos Mendoza"
+                          style="-fx-font-size: 14px; -fx-padding: 10;"/>
+            </VBox>
+            
+            <!-- Email -->
+            <VBox spacing="5">
+                <Label text="Email *" 
+                       style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #7b2cbf;"/>
+                <TextField fx:id="txtEmail" 
+                          promptText="ejemplo@correo.com"
+                          style="-fx-font-size: 14px; -fx-padding: 10;"/>
+            </VBox>
+            
+            <!-- Teléfono -->
+            <VBox spacing="5">
+                <Label text="Teléfono *" 
+                       style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #7b2cbf;"/>
+                <TextField fx:id="txtTelefono" 
+                          promptText="Ej: +57 300 123 4567"
+                          style="-fx-font-size: 14px; -fx-padding: 10;"/>
+            </VBox>
+            
+            <Separator style="-fx-background-color: #e0e0e0;"/>
+            
+            <!-- ==================== SECCIÓN: INFORMACIÓN LABORAL ==================== -->
+            <Label text="🏢 Información Laboral" 
+                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #7b2cbf;"/>
+            
+            <!-- Organización -->
+            <VBox spacing="5">
+                <Label text="Organización *" 
+                       style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #7b2cbf;"/>
+                <TextField fx:id="txtOrganizacion" 
+                          promptText="Ej: Universidad Popular del Cesar"
+                          style="-fx-font-size: 14px; -fx-padding: 10;"/>
+            </VBox>
+            
+            <!-- Departamento -->
+            <VBox spacing="5">
+                <Label text="Departamento/Área *" 
+                       style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #7b2cbf;"/>
+                <TextField fx:id="txtDepartamento" 
+                          promptText="Ej: Facultad de Ingeniería"
+                          style="-fx-font-size: 14px; -fx-padding: 10;"/>
+            </VBox>
+            
+            <!-- Años de Experiencia -->
+            <VBox spacing="5">
+                <Label text="Años de Experiencia *" 
+                       style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #7b2cbf;"/>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Spinner fx:id="spnExperiencia" 
+                            min="0" max="50" initialValue="0"
+                            editable="true"
+                            prefWidth="150"
+                            style="-fx-font-size: 14px;"/>
+                    <Label text="años en organización de eventos" 
+                           style="-fx-text-fill: #666666; -fx-font-size: 12px;"/>
+                </HBox>
+            </VBox>
+            
+            <!-- Nota informativa -->
+            <HBox spacing="10" 
+                  style="-fx-background-color: #e3f2fd; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #2196F3; -fx-border-radius: 8; -fx-border-width: 1;">
+                <Label text="ℹ️" style="-fx-font-size: 20px;"/>
+                <VBox spacing="5">
+                    <Label text="Información importante:" 
+                           style="-fx-text-fill: #1565C0; -fx-font-size: 13px; -fx-font-weight: bold;"/>
+                    <Label text="• Los campos marcados con (*) son obligatorios" 
+                           style="-fx-text-fill: #1976d2; -fx-font-size: 12px;"/>
+                    <Label text="• El email debe ser único en el sistema" 
+                           style="-fx-text-fill: #1976d2; -fx-font-size: 12px;"/>
+                </VBox>
+            </HBox>
+            
+        </VBox>
+    </ScrollPane>
+    
+    <!-- Botones -->
+    <HBox spacing="15" alignment="CENTER">
+        <padding>
+            <Insets top="10"/>
+        </padding>
+        
+        <Button text="💾Guardar Organizador" 
+                onAction="#guardarOrganizador"
+                style="-fx-background-color: #4caf50; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 14 35 14 35; -fx-background-radius: 8;"
+                minWidth="220"/>
+        
+        <Button text="🔄Limpiar Formulario" 
+                onAction="#limpiarFormulario"
+                style="-fx-background-color: #ff9800; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 14 35 14 35; -fx-background-radius: 8;"
+                minWidth="220"/>
+        
+        <Button text="❌Cancelar" 
+                onAction="#cancelar"
+                style="-fx-background-color: #757575; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 14 35 14 35; -fx-background-radius: 8;"
+                minWidth="220"/>
+    </HBox>
+    
+</VBox>

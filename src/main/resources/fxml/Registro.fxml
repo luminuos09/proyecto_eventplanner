@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" 
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="presentacion.controllers.RegistroController"
+      style="-fx-background-color: #bda9ddff;">
+    
+    <!-- HEADER CON COLOR MORADO -->
+    <VBox alignment="CENTER" spacing="15"
+          style="-fx-background-color: linear-gradient(to bottom, #5B21B6, #8B5CF6); -fx-padding: 40;">
+        
+        <!-- Logo -->
+        <ImageView fitWidth="80" fitHeight="80" preserveRatio="true">
+            <image>
+                <Image url="@images/logo.png" />
+            </image>
+        </ImageView>
+        
+        <Label text="Registro de Organizador" 
+               style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+        <Label text="¡Crea tu cuenta de organizador en Event Planner!" 
+               style="-fx-font-size: 15px; -fx-text-fill: #E9D5FF;"/>
+    </VBox>
+    
+    <!-- CONTENIDO CENTRAL -->
+    <ScrollPane fitToWidth="true" style="-fx-background: #F5F5F5;">
+        <VBox alignment="CENTER" spacing="25" style="-fx-padding: 40;">
+            
+            <VBox spacing="20" maxWidth="500"
+                  style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 40; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 15, 0, 0, 5);">
+                
+                <!-- Mensaje informativo -->
+                <VBox spacing="5" 
+                      style="-fx-background-color: #EDE9FE; -fx-background-radius: 8; -fx-padding: 15;">
+                    <Label text="📋 Registro de Organizador" 
+                           style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #5B21B6;"/>
+                    <Label text="Tu cuenta será revisada por un administrador antes de activarse." 
+                           wrapText="true"
+                           style="-fx-font-size: 12px; -fx-text-fill: #6B21A8;"/>
+                </VBox>
+                
+                <!-- Nombre Completo -->
+                <VBox spacing="8">
+                    <Label text="Nombre Completo *" 
+                           style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #555555;"/>
+                    <TextField fx:id="txtNombreCompleto" 
+                               promptText="Ej: Juan Pérez"
+                               style="-fx-background-color: #F5F5F5; -fx-background-radius: 8; -fx-padding: 12; -fx-font-size: 14px; -fx-border-color: #E0E0E0; -fx-border-radius: 8;"/>
+                </VBox>
+                
+                <!-- Email -->
+                <VBox spacing="8">
+                    <Label text="Correo Electrónico *" 
+                           style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #555555;"/>
+                    <TextField fx:id="txtEmail" 
+                               promptText="Ej: juan@email.com"
+                               style="-fx-background-color: #F5F5F5; -fx-background-radius: 8; -fx-padding: 12; -fx-font-size: 14px; -fx-border-color: #E0E0E0; -fx-border-radius: 8;"/>
+                </VBox>
+                
+                <!-- Usuario -->
+                <VBox spacing="8">
+                    <Label text="Nombre de Usuario *" 
+                           style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #555555;"/>
+                    <TextField fx:id="txtUsuario" 
+                               promptText="Mínimo 4 caracteres"
+                               style="-fx-background-color: #F5F5F5; -fx-background-radius: 8; -fx-padding: 12; -fx-font-size: 14px; -fx-border-color: #E0E0E0; -fx-border-radius: 8;"/>
+                </VBox>
+                
+                <!-- Contraseña -->
+                <VBox spacing="8">
+                    <Label text="Contraseña *" 
+                           style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #555555;"/>
+                    <PasswordField fx:id="txtContrasena" 
+                                   promptText="Mínimo 6 caracteres"
+                                   style="-fx-background-color: #F5F5F5; -fx-background-radius: 8; -fx-padding: 12; -fx-font-size: 14px; -fx-border-color: #E0E0E0; -fx-border-radius: 8;"/>
+                </VBox>
+                
+                <!-- Confirmar Contraseña -->
+                <VBox spacing="8">
+                    <Label text="Confirmar Contraseña *" 
+                           style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #555555;"/>
+                    <PasswordField fx:id="txtConfirmarContrasena" 
+                                   promptText="Repita la contraseña"
+                                   style="-fx-background-color: #F5F5F5; -fx-background-radius: 8; -fx-padding: 12; -fx-font-size: 14px; -fx-border-color: #E0E0E0; -fx-border-radius: 8;"/>
+                </VBox>
+                
+                <!-- Mensaje de error/éxito -->
+                <Label fx:id="lblMensaje" 
+                       text="" 
+                       style="-fx-font-size: 13px; -fx-font-weight: bold;"
+                       wrapText="true"
+                       visible="false"/>
+                
+                <!-- Botones -->
+                <VBox spacing="15">
+                    <Button text="✅Registrarse" 
+                            onAction="#handleRegistro"
+                            style="-fx-background-color: linear-gradient(to bottom, #5B21B6, #8B5CF6); -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 10; -fx-padding: 15; -fx-cursor: hand;"
+                            prefWidth="Infinity"
+                            defaultButton="true"/>
+                    
+                    <Button text="⬅ Volver al Login" 
+                            onAction="#volverLogin"
+                            style="-fx-background-color: #757575; -fx-text-fill: white; -fx-font-size: 14px; -fx-background-radius: 10; -fx-padding: 12; -fx-cursor: hand;"
+                            prefWidth="Infinity"/>
+                </VBox>
+                
+                <!-- Nota -->
+                <Label text="* Todos los campos son obligatorios" 
+                       style="-fx-font-size: 11px; -fx-text-fill: #999999; -fx-font-style: italic;"/>
+                
+            </VBox>
+            
+        </VBox>
+    </ScrollPane>
+    
+    <!-- FOOTER CON COLOR MORADO -->
+    <VBox alignment="CENTER" spacing="8"
+          style="-fx-background-color: linear-gradient(to bottom, #8B5CF6, #5B21B6); -fx-padding: 20;">
+        <Label text="Universidad Popular del Cesar" 
+               style="-fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold;"/>
+        <Label text="Programación de Computadores II - 2025" 
+               style="-fx-text-fill: #E9D5FF; -fx-font-size: 12px;"/>
+    </VBox>
+    
+</VBox>

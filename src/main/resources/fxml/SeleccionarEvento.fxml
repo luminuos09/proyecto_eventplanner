@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="presentacion.controllers.SeleccionarEventoController"
+      spacing="15" 
+      style="-fx-background-color: white;"
+      prefWidth="900" 
+      prefHeight="700">
+    
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    
+    <!-- TÍTULO -->
+    <Label text="📅 Seleccionar Evento" 
+           style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #1565C0;"/>
+    
+    <Separator/>
+    
+    <!-- BÚSQUEDA -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="🔍 Buscar:" style="-fx-font-size: 14px;"/>
+        <TextField fx:id="txtBuscar" 
+                   promptText="Nombre del evento..." 
+                   HBox.hgrow="ALWAYS"
+                   style="-fx-font-size: 14px;"
+                   onKeyReleased="#filtrarEventos"/>
+    </HBox>
+    
+    <!-- FILTROS -->
+    <HBox spacing="15" alignment="CENTER_LEFT">
+        <Label text="Filtrar por estado:" style="-fx-font-size: 12px;"/>
+        <ComboBox fx:id="cmbEstado" 
+                  promptText="Todos los estados"
+                  onAction="#filtrarEventos"
+                  style="-fx-font-size: 12px;"
+                  prefWidth="180"/>
+        
+        <Label text="Tipo:" style="-fx-font-size: 12px;"/>
+        <ComboBox fx:id="cmbTipo" 
+                  promptText="Todos los tipos"
+                  onAction="#filtrarEventos"
+                  style="-fx-font-size: 12px;"
+                  prefWidth="180"/>
+    </HBox>
+    
+    <!-- TABLA DE EVENTOS -->
+    <TableView fx:id="tablaEventos" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colNombre" text="Nombre" prefWidth="250"/>
+            <TableColumn fx:id="colTipo" text="Tipo" prefWidth="120"/>
+            <TableColumn fx:id="colEstado" text="Estado" prefWidth="100"/>
+            <TableColumn fx:id="colFecha" text="Fecha" prefWidth="100"/>
+        </columns>
+    </TableView>
+    
+    <!-- INFO DEL EVENTO SELECCIONADO -->
+    <VBox spacing="5" style="-fx-background-color: #f5f5f5; -fx-padding: 10; -fx-background-radius: 5;">
+        <Label text="📋 Información del evento seleccionado:" 
+               style="-fx-font-weight: bold; -fx-font-size: 12px;"/>
+        <Label fx:id="lblInfoEvento" 
+               text="Seleccione un evento de la tabla" 
+               wrapText="true"
+               style="-fx-font-size: 11px; -fx-text-fill: #666;"/>
+    </VBox>
+    
+    <!-- BOTONES -->
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="✅ Seleccionar" 
+                onAction="#confirmarSeleccion"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10 30;"
+                defaultButton="true"/>
+        
+        <Button text="❌Cancelar" 
+                onAction="#cancelar"
+                style="-fx-background-color: #757575; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 10 30;"
+                cancelButton="true"/>
+    </HBox>
+    
+</VBox>

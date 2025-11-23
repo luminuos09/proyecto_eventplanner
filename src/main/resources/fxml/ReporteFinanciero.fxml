@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="presentacion.controllers.ReporteFinancieroController"
+            fitToWidth="true"
+            style="-fx-background: #f5f5f5;">
+    <VBox spacing="20" style="-fx-background-color: #f5f5f5;">
+        
+        <padding>
+            <Insets top="20" right="30" bottom="20" left="30"/>
+        </padding>
+        
+        <!-- HEADER -->
+        <HBox alignment="CENTER" style="-fx-background-color: linear-gradient(to bottom, #0277BD, #0288D1); -fx-background-radius: 10;">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <VBox alignment="CENTER" spacing="5">
+                <Label text="💰 Reportes Financieros" 
+                       style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;"/>
+                <Label text="Análisis de ingresos, comisiones y pagos" 
+                       style="-fx-text-fill: white; -fx-font-size: 14px;"/>
+            </VBox>
+        </HBox>
+        
+        <!-- RESUMEN FINANCIERO -->
+        <Label text="📈 Resumen Financiero General" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        
+        <GridPane hgap="20" vgap="20">
+            
+            <!-- Ingresos Totales -->
+            <VBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: #4CAF50; -fx-background-radius: 12; -fx-padding: 20;"
+                  prefWidth="280" prefHeight="130"
+                  GridPane.rowIndex="0" GridPane.columnIndex="0">
+                <Label text="📈Ingresos Totales" style="-fx-text-fill: white; -fx-font-size: 13px;"/>
+                <Label fx:id="lblIngresosTotales" text="0" style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;"/>
+            </VBox>
+            
+            <!-- Comisión Plataforma -->
+            <VBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: #FF9800; -fx-background-radius: 12; -fx-padding: 20;"
+                  prefWidth="280" prefHeight="130"
+                  GridPane.rowIndex="0" GridPane.columnIndex="1">
+                <Label text="🏦Comisión Plataforma" style="-fx-text-fill: white; -fx-font-size: 13px;"/>
+                <Label fx:id="lblComisionPlataforma" text="0" style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;"/>
+            </VBox>
+            
+            <!-- Ingresos Organizadores -->
+            <VBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: #2196F3; -fx-background-radius: 12; -fx-padding: 20;"
+                  prefWidth="280" prefHeight="130"
+                  GridPane.rowIndex="0" GridPane.columnIndex="2">
+                <Label text="👥Ingresos Organizadores" style="-fx-text-fill: white; -fx-font-size: 13px;"/>
+                <Label fx:id="lblIngresosOrganizadores" text="0" style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;"/>
+            </VBox>
+            
+            <!-- Total Transacciones -->
+            <VBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: #9C27B0; -fx-background-radius: 12; -fx-padding: 20;"
+                  prefWidth="280" prefHeight="130"
+                  GridPane.rowIndex="0" GridPane.columnIndex="3">
+                <Label text="🧾Total Transacciones" style="-fx-text-fill: white; -fx-font-size: 13px;"/>
+                <Label fx:id="lblTotalTransacciones" text="0" style="-fx-text-fill: white; -fx-font-size: 32px; -fx-font-weight: bold;"/>
+            </VBox>
+            
+        </GridPane>
+        
+        <!-- OPCIONES DE REPORTES -->
+        <Label text="📊 Reportes Disponibles" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+        
+        <GridPane hgap="20" vgap="20">
+            
+            <!-- Ingresos por Evento -->
+            <VBox alignment="CENTER" spacing="15"
+                  style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand; -fx-padding: 20;"
+                  prefWidth="380" prefHeight="140"
+                  onMouseClicked="#reporteIngresosPorEvento"
+                  GridPane.rowIndex="0" GridPane.columnIndex="0">
+                <Label text="💵Ingresos por Evento" 
+                       style="-fx-text-fill: #4CAF50; -fx-font-size: 17px; -fx-font-weight: bold;"/>
+                <Label text="Ver ingresos detallados de un evento específico" 
+                       style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-text-alignment: center;" 
+                       wrapText="true" 
+                       maxWidth="350"/>
+            </VBox>
+            
+            <!-- Ingresos por Método de Pago -->
+            <VBox alignment="CENTER" spacing="15"
+                  style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand; -fx-padding: 20;"
+                  prefWidth="380" prefHeight="140"
+                  onMouseClicked="#reporteIngresosPorMetodoPago"
+                  GridPane.rowIndex="0" GridPane.columnIndex="1">
+                <Label text="💳Ingresos por Método de Pago" 
+                       style="-fx-text-fill: #2196F3; -fx-font-size: 17px; -fx-font-weight: bold;"/>
+                <Label text="Distribución de ingresos por tipo de pago" 
+                       style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-text-alignment: center;" 
+                       wrapText="true" 
+                       maxWidth="350"/>
+            </VBox>
+            
+            <!-- Ranking de Eventos -->
+            <VBox alignment="CENTER" spacing="15"
+                  style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand; -fx-padding: 20;"
+                  prefWidth="380" prefHeight="140"
+                  onMouseClicked="#reporteRankingEventos"
+                  GridPane.rowIndex="1" GridPane.columnIndex="0">
+                <Label text="🏆Ranking de Eventos" 
+                       style="-fx-text-fill: #FF9800; -fx-font-size: 17px; -fx-font-weight: bold;"/>
+                <Label text="Top eventos ordenados por ingresos" 
+                       style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-text-alignment: center;" 
+                       wrapText="true" 
+                       maxWidth="350"/>
+            </VBox>
+            
+            <!-- Estadísticas de Comisiones -->
+            <VBox alignment="CENTER" spacing="15"
+                  style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand; -fx-padding: 20;"
+                  prefWidth="380" prefHeight="140"
+                  onMouseClicked="#reporteEstadisticasComisiones"
+                  GridPane.rowIndex="1" GridPane.columnIndex="1">
+                 <Label text="📊Estadísticas de Comisiones"    
+                       style="-fx-text-fill: #9C27B0; -fx-font-size: 17px; -fx-font-weight: bold;"/>
+                <Label text="Análisis detallado de comisiones" 
+                       style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-text-alignment: center;" 
+                       wrapText="true" 
+                       maxWidth="350"/>
+            </VBox>
+            
+        </GridPane>
+        
+        <!-- ÁREA DE RESULTADOS -->
+        <VBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20;">
+            <Label text="📄 Resultados" 
+                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2E7D32;"/>
+            <Separator/>
+            
+            <ScrollPane fitToWidth="true" prefHeight="300">
+                <TextArea fx:id="txtResultados" 
+                          editable="false" 
+                          wrapText="true"
+                          style="-fx-control-inner-background: #f5f5f5; -fx-font-family: 'Courier New'; -fx-font-size: 12px;"
+                          promptText="Los reportes financieros se mostrarán aquí..."/>
+            </ScrollPane>
+            
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="💾 Guardar Reporte" 
+                        onAction="#guardarReporte"
+                        style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 12px; -fx-padding: 8 20;"/>
+                
+                <Button text="🔄 Actualizar Datos" 
+                        onAction="#actualizarDatos"
+                        style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 12px; -fx-padding: 8 20;"/>
+                
+                <Button text="Limpiar" 
+                        onAction="#limpiarResultados"
+                        style="-fx-background-color: #757575; -fx-text-fill: white; -fx-font-size: 12px; -fx-padding: 8 20;"/>
+            </HBox>
+        </VBox>
+        
+        <!-- BOTÓN VOLVER -->
+        <HBox alignment="CENTER">
+            <Button text="⬅Volver a Menú de Reportes" 
+                    onAction="#volver"
+                    style="-fx-background-color: #2E7D32; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 12 30;"
+                    prefWidth="300"/>
+        </HBox>
+        
+    </VBox>
+    
+</ScrollPane>

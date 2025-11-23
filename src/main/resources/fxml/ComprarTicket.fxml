@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="presentacion.controllers.ComprarTicketController"
+      style="-fx-background-color: #f5f5f5;"
+      prefWidth="900" 
+      prefHeight="750">
+    
+    <!-- HEADER FIJO -->
+    <HBox alignment="CENTER" style="-fx-background-color: #43a047; -fx-background-radius: 10;">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+        <VBox alignment="CENTER" spacing="5">
+            <Label text="🎫 Comprar Ticket" 
+                   style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;"/>
+            <Label text="Selecciona tu evento y adquiere tu entrada" 
+                   style="-fx-text-fill: white; -fx-font-size: 14px;"/>
+        </VBox>
+    </HBox>
+    
+    <!-- CONTENIDO CON SCROLL -->
+    <ScrollPane VBox.vgrow="ALWAYS" fitToWidth="true" 
+                style="-fx-background: #f5f5f5; -fx-background-color: #f5f5f5;">
+        <VBox spacing="20" minHeight="900">
+            <padding>
+                <Insets top="20" right="40" bottom="20" left="40"/>
+            </padding>
+            
+            <!-- FORMULARIO -->
+            <VBox spacing="20" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 25;">
+                
+                <!-- Participante -->
+                <VBox spacing="5">
+                    <Label text="Participante *" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                    <ComboBox fx:id="cboParticipante" promptText="Seleccione..." prefWidth="600"/>
+                </VBox>
+                
+                <Separator/>
+                
+                <!-- Evento -->
+                <VBox spacing="5">
+                    <Label text="Evento *" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                    <ComboBox fx:id="cboEvento" promptText="Seleccione..." prefWidth="600"/>
+                </VBox>
+                
+                <!-- Info Evento -->
+                <VBox fx:id="panelInfoEvento" spacing="8" visible="false" managed="false"
+                      style="-fx-background-color: #e8f5e9; -fx-padding: 15; -fx-background-radius: 8;">
+                    <Label text="📋 Información del Evento" style="-fx-font-weight: bold;"/>
+                    <HBox spacing="10">
+                        <Label text="Nombre:"/>
+                        <Label fx:id="lblEventoNombre" text="-" style="-fx-font-weight: bold;"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label text="Fecha:"/>
+                        <Label fx:id="lblEventoFecha" text="-"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label text="Ubicación:"/>
+                        <Label fx:id="lblEventoUbicacion" text="-"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label text="Cupos:"/>
+                        <Label fx:id="lblEventoCupos" text="-"/>
+                    </HBox>
+                </VBox>
+                
+                <Separator/>
+                
+                <!-- Tipo Ticket -->
+                <VBox spacing="5">
+                    <Label text="Tipo de Ticket *" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                    <ComboBox fx:id="cboTipoTicket" promptText="Seleccione..." prefWidth="600"/>
+                </VBox>
+                
+                <!-- Info Ticket -->
+                <VBox fx:id="panelInfoTicket" spacing="8" visible="false" managed="false"
+                      style="-fx-background-color: #fff3e0; -fx-padding: 15; -fx-background-radius: 8;">
+                    <Label text="🎟️ Detalles del Ticket" style="-fx-font-weight: bold;"/>
+                    <HBox spacing="10">
+                        <Label text="Tipo:"/>
+                        <Label fx:id="lblTicketTipo" text="-" style="-fx-font-weight: bold;"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label text="Beneficios:"/>
+                        <Label fx:id="lblTicketBeneficios" text="-" wrapText="true"/>
+                    </HBox>
+                    <HBox spacing="10">
+                        <Label text="Precio:"/>
+                        <Label fx:id="lblTicketPrecio" text="-" style="-fx-font-weight: bold;"/>
+                    </HBox>
+                </VBox>
+                
+                <Separator/>
+                
+                <!-- Método Pago -->
+                <VBox spacing="5">
+                    <Label text="Método de Pago *" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                    <ComboBox fx:id="cboMetodoPago" promptText="Seleccione..." prefWidth="600"/>
+                </VBox>
+                
+                <!-- Resumen -->
+                <VBox fx:id="panelResumen" spacing="10" visible="false" managed="false"
+                      style="-fx-background-color: #e3f2fd; -fx-padding: 20; -fx-background-radius: 8;">
+                    <Label text="💰 Resumen del Pago" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                    <Separator/>
+                    <HBox spacing="20">
+                        <Label text="Precio:"/>
+                        <Label fx:id="lblResumenPrecio" text="0"/>
+                    </HBox>
+                    <HBox spacing="20">
+                        <Label text="Comisión:"/>
+                        <Label fx:id="lblResumenComision" text="0"/>
+                    </HBox>
+                    <HBox spacing="20">
+                        <Label text="TOTAL:" style="-fx-font-weight: bold;"/>
+                        <Label fx:id="lblResumenTotal" text="0" style="-fx-font-weight: bold; -fx-font-size: 18px;"/>
+                    </HBox>
+                </VBox>
+                
+            </VBox>
+        </VBox>
+    </ScrollPane>
+    
+    <!-- BOTONES FIJOS -->
+    <HBox spacing="15" alignment="CENTER" style="-fx-padding: 15; -fx-background-color: #f5f5f5;">
+        <Button text="💳 Procesar Pago" 
+                onAction="#procesarCompra"
+                style="-fx-background-color: #43a047; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 14 40;"
+                minWidth="220"/>
+        
+        <Button text="❌ Cancelar" 
+                onAction="#cancelar"
+                style="-fx-background-color: #757575; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 14 40;"
+                minWidth="180"/>
+    </HBox>
+    
+</VBox>

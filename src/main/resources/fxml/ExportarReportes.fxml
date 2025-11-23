@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/17" 
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="presentacion.controllers.ExportarReportesController"
+            fitToWidth="true"
+            style="-fx-background: #F5F5F5;">
+
+<VBox spacing="30" 
+      alignment="CENTER"
+      style="-fx-background-color: linear-gradient(to bottom, #E1F5FE, #F5F5F5);"
+      minWidth="900" 
+      minHeight="700">
+    
+    <padding>
+        <Insets top="40" right="50" bottom="40" left="50"/>
+    </padding>
+    
+    <!-- ENCABEZADO -->
+    <VBox alignment="CENTER" spacing="10"
+          style="-fx-background-color: linear-gradient(to bottom, #0277BD, #0288D1); -fx-background-radius: 15; -fx-padding: 30;">
+        <Label text="📄Exportar Reportes" 
+               style="-fx-text-fill: white; -fx-font-size: 42px; -fx-font-weight: bold;"/>
+        <Label text="Genera y descarga reportes en diferentes formatos" 
+               style="-fx-text-fill: #E1F5FE; -fx-font-size: 16px;"/>
+    </VBox>
+    
+    <!-- SELECCIÓN DE TIPO DE REPORTE -->
+    <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+        <Label text="1. SELECCIONE EL TIPO DE REPORTE" 
+               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #0277BD;"/>
+        <Separator/>
+        
+        <GridPane hgap="20" vgap="20">
+            
+            <!-- Reporte de Eventos -->
+            <VBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: #E3F2FD; -fx-background-radius: 10; -fx-padding: 15; -fx-cursor: hand;"
+                  prefWidth="200" prefHeight="120"
+                  fx:id="btnReporteEventos"
+                  onMouseClicked="#seleccionarReporteEventos"
+                  GridPane.rowIndex="0" GridPane.columnIndex="0">
+                 <Label text="📅Reporte de Eventos" style="-fx-text-fill: #01579B; -fx-font-size: 13px; -fx-font-weight: bold;"/>
+                <Label text="Estadisticas generales" style="-fx-text-fill: #666666; -fx-font-size: 11px;"/>
+            </VBox>
+            
+            <!-- Reporte de Asistencia -->
+            <VBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: #E3F2FD; -fx-background-radius: 10; -fx-padding: 15; -fx-cursor: hand;"
+                  prefWidth="200" prefHeight="120"
+                  fx:id="btnReporteAsistencia"
+                  onMouseClicked="#seleccionarReporteAsistencia"
+                  GridPane.rowIndex="0" GridPane.columnIndex="1">
+                 <Label text="✅Reporte de Asistencia" style="-fx-text-fill: #01579B; -fx-font-size: 13px; -fx-font-weight: bold;"/>
+                <Label text="Por evento" style="-fx-text-fill: #666666; -fx-font-size: 11px;"/>
+            </VBox>
+            
+            <!-- Reporte Financiero -->
+            <VBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: #E3F2FD; -fx-background-radius: 10; -fx-padding: 15; -fx-cursor: hand;"
+                  prefWidth="200" prefHeight="120"
+                  fx:id="btnReporteFinanciero"
+                  onMouseClicked="#seleccionarReporteFinanciero"
+                  GridPane.rowIndex="0" GridPane.columnIndex="2">
+                 <Label text="💰Reporte Financiero" style="-fx-text-fill: #01579B; -fx-font-size: 13px; -fx-font-weight: bold;"/>
+                <Label text="Ingresos y comisiones" style="-fx-text-fill: #666666; -fx-font-size: 11px;"/>
+            </VBox>
+            
+            <!-- Reporte de Participantes -->
+            <VBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: #E3F2FD; -fx-background-radius: 10; -fx-padding: 15; -fx-cursor: hand;"
+                  prefWidth="200" prefHeight="120"
+                  fx:id="btnReporteParticipantes"
+                  onMouseClicked="#seleccionarReporteParticipantes"
+                  GridPane.rowIndex="0" GridPane.columnIndex="3">
+                 <Label text="👥Participantes" style="-fx-text-fill: #01579B; -fx-font-size: 13px; -fx-font-weight: bold;"/>
+                <Label text="Lista completa" style="-fx-text-fill: #666666; -fx-font-size: 11px;"/>
+            </VBox>
+            
+        </GridPane>
+        
+        <Label fx:id="lblTipoSeleccionado" 
+               text="Seleccione un tipo de reporte" 
+               style="-fx-text-fill: #666666; -fx-font-size: 13px; -fx-font-style: italic;"/>
+    </VBox>
+    
+    <!-- SELECCIÓN DE FORMATO -->
+    <VBox spacing="15" style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+        <Label text="2. SELECCIONE EL FORMATO DE EXPORTACION" 
+               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #0277BD;"/>
+        <Separator/>
+        
+        <GridPane hgap="25" vgap="20">
+            
+            <!-- Formato TXT -->
+            <VBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #0277BD; -fx-border-width: 2; -fx-border-radius: 12; -fx-padding: 20; -fx-cursor: hand;"
+                  prefWidth="250" prefHeight="140"
+                  onMouseClicked="#exportarTXT"
+                  GridPane.rowIndex="0" GridPane.columnIndex="0">
+                 <Label text="📝Texto Plano" style="-fx-text-fill: #0277BD; -fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <Label text="Formato simple y universal" 
+                       style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-text-alignment: center;" 
+                       wrapText="true" 
+                       maxWidth="220"/>
+            </VBox>
+            
+            <!-- Formato CSV -->
+            <VBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #4CAF50; -fx-border-width: 2; -fx-border-radius: 12; -fx-padding: 20; -fx-cursor: hand;"
+                  prefWidth="250" prefHeight="140"
+                  onMouseClicked="#exportarCSV"
+                  GridPane.rowIndex="0" GridPane.columnIndex="1">
+                <Label text="📊Excel Compatible" style="-fx-text-fill: #4CAF50; -fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <Label text="Abre en Excel y hojas de calculo" 
+                       style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-text-alignment: center;" 
+                       wrapText="true" 
+                       maxWidth="220"/>
+            </VBox>
+            
+            <!-- Formato PDF -->
+            <VBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: white; -fx-background-radius: 12; -fx-border-color: #F44336; -fx-border-width: 2; -fx-border-radius: 12; -fx-padding: 20; -fx-cursor: hand;"
+                  prefWidth="250" prefHeight="140"
+                  onMouseClicked="#exportarPDF"
+                  GridPane.rowIndex="0" GridPane.columnIndex="2">
+                <Label text="📑Documento PDF" style="-fx-text-fill: #F44336; -fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <Label text="Formato profesional para imprimir" 
+                       style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-text-alignment: center;" 
+                       wrapText="true" 
+                       maxWidth="220"/>
+            </VBox>
+            
+        </GridPane>
+    </VBox>
+    
+    <!-- ESTADO -->
+    <VBox spacing="10" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20;">
+        <Label text="ESTADO" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #0277BD;"/>
+        <Separator/>
+        <Label fx:id="lblEstado" 
+               text="Listo para exportar. Seleccione un tipo de reporte y un formato." 
+               style="-fx-text-fill: #666666; -fx-font-size: 13px;" 
+               wrapText="true"/>
+        <ProgressBar fx:id="progressBar" 
+                     prefWidth="Infinity" 
+                     progress="0" 
+                     visible="false"/>
+    </VBox>
+    
+    <!-- BOTONES -->
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="Limpiar Seleccion" 
+                onAction="#limpiarSeleccion"
+                style="-fx-background-color: #757575; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 12 25;"/>
+        
+        <Button text="⬅Volver a Menu de Reportes" 
+                onAction="#volver"
+                style="-fx-background-color: #0277BD; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 12 30;"/>
+    </HBox>
+    
+    <!-- FOOTER -->
+    <VBox alignment="CENTER" spacing="5"
+          style="-fx-background-color: linear-gradient(to bottom, #0277BD, #0288D1); -fx-background-radius: 10; -fx-padding: 15;">
+        <Label text="Event Planner - Exportacion de Reportes" 
+               style="-fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold;"/>
+    </VBox>
+    
+</VBox>
+
+</ScrollPane>

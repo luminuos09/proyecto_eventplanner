@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="presentacion.controllers.ListaEventosController"
+            prefHeight="700.0" prefWidth="1000.0"
+            style="-fx-background-color: #F5F5F5;">
+    
+    <!-- ENCABEZADO -->
+    <top>
+        <VBox alignment="CENTER" spacing="10" 
+              style="-fx-background-color: linear-gradient(to bottom, #5B21B6, #7C3AED); -fx-padding: 30;">
+            <Label text="📋Lista de Eventos" 
+                   style="-fx-text-fill: white; -fx-font-size: 36px; -fx-font-weight: bold;"/>
+            <Label text="Todos los eventos registrados en el sistema" 
+                   style="-fx-text-fill: #E9D5FF; -fx-font-size: 14px;"/>
+        </VBox>
+    </top>
+    
+    <!-- CONTENIDO -->
+    <center>
+        <VBox spacing="20" style="-fx-padding: 30;">
+            
+            <!-- BARRA DE HERRAMIENTAS -->
+            <HBox spacing="15" alignment="CENTER_LEFT">
+                <TextField fx:id="txtBusqueda" 
+                           promptText="🔍Buscar por nombre..."
+                           prefWidth="300"
+                           style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-padding: 10; -fx-font-size: 13px;"/>
+                
+                <ComboBox fx:id="cmbFiltroEstado" 
+                          promptText="Filtrar por estado"
+                          prefWidth="200"
+                          style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0;"/>
+                
+                <ComboBox fx:id="cmbFiltroTipo" 
+                          promptText="Filtrar por tipo"
+                          prefWidth="200"
+                          style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0;"/>
+                
+                <Region HBox.hgrow="ALWAYS"/>
+                
+                <Label fx:id="lblTotal" 
+                       text="Total: 0 eventos"
+                       style="-fx-text-fill: #5B21B6; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+            </HBox>
+            
+            <!-- TABLA -->
+            <TableView fx:id="tablaEventos" VBox.vgrow="ALWAYS"
+                       style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3);">
+                <columns>
+                    <TableColumn fx:id="colNombre" text="Nombre" prefWidth="250"/>
+                    <TableColumn fx:id="colTipo" text="Tipo" prefWidth="120"/>
+                    <TableColumn fx:id="colFecha" text="Fecha Inicio" prefWidth="150"/>
+                    <TableColumn fx:id="colUbicacion" text="Ubicación" prefWidth="180"/>
+                    <TableColumn fx:id="colCapacidad" text="Capacidad" prefWidth="100"/>
+                    <TableColumn fx:id="colEstado" text="Estado" prefWidth="120"/>
+                    <TableColumn fx:id="colAcciones" text="Acciones" prefWidth="80"/>
+                </columns>
+            </TableView>
+            
+            <!-- BOTONES INFERIORES -->
+            <HBox spacing="15" alignment="CENTER">
+                <Button text="🔄Actualizar" 
+                        onAction="#actualizar"
+                        style="-fx-background-color: #7C3AED; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 10 25; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                
+                <Button text="➕Nuevo Evento" 
+                        onAction="#nuevoEvento"
+                        style="-fx-background-color: #16A34A; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 10 25; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                
+                <Button text="Ver Detalle" 
+                        onAction="#verDetalle"
+                        style="-fx-background-color: #9333EA; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 10 25; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                
+                <Button text="⬅Volver" 
+                        onAction="#volver"
+                        style="-fx-background-color: #A855F7; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 10 25; -fx-background-radius: 8; -fx-cursor: hand;"/>
+            </HBox>
+            
+        </VBox>
+    </center>
+    
+    <!-- FOOTER -->
+    <bottom>
+        <HBox alignment="CENTER" 
+              style="-fx-background-color: linear-gradient(to right, #7C3AED, #5B21B6); -fx-padding: 15;">
+            <Label text="Event Planner © 2025 - Sistema de Gestión de Eventos" 
+                   style="-fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold;"/>
+        </HBox>
+    </bottom>
+    
+</BorderPane>

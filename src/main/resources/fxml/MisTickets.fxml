@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="presentacion.controllers.MisTicketsController"
+      spacing="20" 
+      style="-fx-background-color: #f5f5f5;"
+      prefWidth="1000" 
+      prefHeight="700">
+    
+    <padding>
+        <Insets top="20" right="30" bottom="20" left="30"/>
+    </padding>
+    
+    <!-- Encabezado CON DEGRADADO -->
+    <HBox alignment="CENTER" style="-fx-background-color: linear-gradient(to bottom, #2e7d32, #43a047); -fx-background-radius: 10;">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+        <VBox alignment="CENTER" spacing="5">
+            <Label text="🎫Mis Tickets" 
+                   style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;"/>
+            <Label text="Consulta todos tus tickets comprados" 
+                   style="-fx-text-fill: #e0e0e0; -fx-font-size: 14px;"/>
+        </VBox>
+    </HBox>
+    
+    <!-- Panel de búsqueda -->
+    <HBox spacing="15" alignment="CENTER_LEFT"
+          style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+        <Label text="Participante:" style="-fx-font-weight: bold;"/>
+        <ComboBox fx:id="cboParticipante" 
+                  promptText="Seleccione participante..." 
+                  prefWidth="400"/>
+        <Button text="🔄Actualizar" 
+                onAction="#actualizarLista"
+                style="-fx-background-color: #43a047; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 8 20 8 20;"/>
+    </HBox>
+    
+    <!-- Tabla de tickets -->
+    <VBox spacing="10" 
+          style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);"
+          VBox.vgrow="ALWAYS">
+        <padding>
+            <Insets top="15" right="15" bottom="15" left="15"/>
+        </padding>
+        
+        <Label text="📋Tickets Comprados" 
+               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #43a047;"/>
+        
+        <TableView fx:id="tablaTickets" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="120"/>
+                <TableColumn fx:id="colEvento" text="Evento" prefWidth="250"/>
+                <TableColumn fx:id="colTipo" text="Tipo" prefWidth="120"/>
+                <TableColumn fx:id="colPrecio" text="Precio" prefWidth="100"/>
+                <TableColumn fx:id="colFechaCompra" text="Comprado" prefWidth="150"/>
+                <TableColumn fx:id="colEstado" text="Estado" prefWidth="100"/>
+                <TableColumn fx:id="colQR" text="Código QR" prefWidth="150"/>
+            </columns>
+            <placeholder>
+                <Label text="No tienes tickets comprados" style="-fx-text-fill: #999999;"/>
+            </placeholder>
+        </TableView>
+    </VBox>
+    
+    <!-- Botones -->
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="⬅Volver" 
+                onAction="#volver"
+                style="-fx-background-color: #43a047; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 12 30 12 30; -fx-background-radius: 8;"
+                minWidth="200"/>
+    </HBox>
+    
+</VBox>

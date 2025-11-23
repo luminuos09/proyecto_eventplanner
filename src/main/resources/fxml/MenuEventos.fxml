@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="presentacion.controllers.MenuEventosController"
+      spacing="30" 
+      alignment="CENTER"
+      style="-fx-background-color: linear-gradient(to bottom, #DDD6FE, #EDE9FE);"
+      prefWidth="900" 
+      prefHeight="700">
+    
+    <padding>
+        <Insets top="40" right="50" bottom="40" left="50"/>
+    </padding>
+    
+    <!-- ENCABEZADO -->
+    <VBox alignment="CENTER" spacing="15"
+          style="-fx-background-color: linear-gradient(to bottom, #5B21B6, #8B5CF6); -fx-background-radius: 15; -fx-padding: 30;">
+        <Label text="📅Gestión de Eventos" 
+               style="-fx-text-fill: white; -fx-font-size: 42px; -fx-font-weight: bold;"/>
+        <Label text="Administra y publica eventos" 
+               style="-fx-text-fill: #E9D5FF; -fx-font-size: 16px;"/>
+    </VBox>
+    
+    <!-- GRID DE OPCIONES -->
+    <GridPane hgap="25" vgap="25" alignment="CENTER">
+        
+        <!-- Crear Evento -->
+        <VBox alignment="CENTER" spacing="10"
+              onMouseClicked="#crearEvento"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #E9D5FF; -fx-border-width: 2; -fx-border-radius: 15; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3); -fx-padding: 20;"
+              prefWidth="350"
+              prefHeight="180"
+              GridPane.rowIndex="0" GridPane.columnIndex="0">
+            <Label text="➕Crear Evento" 
+                   style="-fx-text-fill: #5B21B6; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Registra un nuevo evento" 
+                style="-fx-text-fill: #666666; -fx-font-size: 12px;"
+                wrapText="true"
+                maxWidth="300"/>
+        </VBox>
+
+        <!-- Listar Eventos -->
+        <VBox alignment="CENTER" spacing="10"
+              onMouseClicked="#listarEventos"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #E9D5FF; -fx-border-width: 2; -fx-border-radius: 15; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3); -fx-padding: 20;"
+              prefWidth="350"
+              prefHeight="180"
+              GridPane.rowIndex="0" GridPane.columnIndex="1">
+            <Label text="📋Listar Eventos" 
+                   style="-fx-text-fill: #5B21B6; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Visualiza todos los eventos"  
+                   style="-fx-text-fill: #666666; -fx-font-size: 12px;"
+                   wrapText="true" 
+                   maxWidth="300"/>
+        </VBox>
+
+        <!-- Publicar Eventos -->
+        <VBox alignment="CENTER" spacing="10"
+              onMouseClicked="#publicarEventos"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #E9D5FF; -fx-border-width: 2; -fx-border-radius: 15; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3); -fx-padding: 20;"
+              prefWidth="350"
+              prefHeight="180"
+              GridPane.rowIndex="1" GridPane.columnIndex="0">
+            <Label text="🚀Publicar Eventos" 
+                   style="-fx-text-fill: #5B21B6; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Cambia el estado de eventos"
+                style="-fx-text-fill: #666666; -fx-font-size: 12px;"
+                wrapText="true"    
+                maxWidth="300"/>
+        </VBox>
+
+        <!-- Buscar Eventos -->
+        <VBox alignment="CENTER" spacing="10"
+              onMouseClicked="#buscarEventos"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-border-color: #E9D5FF; -fx-border-width: 2; -fx-border-radius: 15; -fx-cursor: hand; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 3); -fx-padding: 20;"
+              prefWidth="350"
+              prefHeight="180"
+              GridPane.rowIndex="1" GridPane.columnIndex="1">
+               
+            <Label text="🔍Buscar Eventos" 
+                   style="-fx-text-fill: #5B21B6; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Encuentra eventos específicos" 
+            style="-fx-text-fill: #666666; -fx-font-size: 12px;"
+                   wrapText="true" 
+                   maxWidth="300"/>
+        </VBox>
+        
+    </GridPane>
+    
+    <!-- BOTÓN VOLVER -->
+    <Button text="⬅ Volver al Menú Principal" 
+            onAction="#volver"
+            style="-fx-background-color: #5B21B6; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 15 40; -fx-background-radius: 25;"
+            prefWidth="350"/>
+    
+    <!-- FOOTER -->
+    <VBox alignment="CENTER" spacing="5"
+          style="-fx-background-color: linear-gradient(to bottom, #5B21B6, #8B5CF6); -fx-background-radius: 10; -fx-padding: 15;">
+        <Label text="Event Planner © 2025 - Sistema de Gestión de Eventos" 
+               style="-fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold;"/>
+    </VBox>
+    
+</VBox>

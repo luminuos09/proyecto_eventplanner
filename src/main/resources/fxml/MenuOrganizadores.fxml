@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="presentacion.controllers.MenuOrganizadoresController"
+      spacing="0"
+      style="-fx-background-color: #F5F5F5;">
+    
+    <!-- ENCABEZADO -->
+    <VBox alignment="CENTER" spacing="15"
+          style="-fx-background-color: linear-gradient(to bottom, #5B21B6, #8B5CF6); -fx-padding: 30;">
+        <Label text="👔 Gestión de Organizadores" 
+               style="-fx-text-fill: white; -fx-font-size: 36px; -fx-font-weight: bold;"/>
+        <Label text="Administra organizadores, aprueba solicitudes y gestiona información" 
+               style="-fx-text-fill: #E9D5FF; -fx-font-size: 15px;"/>
+    </VBox>
+    
+    <!-- TABS PRINCIPALES -->
+    <TabPane fx:id="tabPane" VBox.vgrow="ALWAYS" 
+             style="-fx-background-color: white;"
+             tabClosingPolicy="UNAVAILABLE">
+        
+        <!-- TAB 1: SOLICITUDES PENDIENTES -->
+        <Tab text="⏳ Solicitudes Pendientes" fx:id="tabPendientes">
+            <VBox spacing="20" style="-fx-padding: 30;">
+                
+                <!-- Header de la sección -->
+                <HBox alignment="CENTER_LEFT" spacing="15">
+                    <Label text="Solicitudes Pendientes de Aprobación" 
+                           style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #5B21B6;"/>
+                    <Label fx:id="lblCantidadPendientes" 
+                           text="(0)" 
+                           style="-fx-font-size: 18px; -fx-text-fill: #EAB308;"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="🔄 Actualizar" 
+                            onAction="#actualizarListas"
+                            style="-fx-background-color: #8B5CF6; -fx-text-fill: white; -fx-font-size: 12px; -fx-padding: 8 15; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                </HBox>
+                
+                <!-- Tabla de pendientes -->
+                <TableView fx:id="tablaPendientes" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colPendNombre" text="Nombre Completo" prefWidth="200"/>
+                        <TableColumn fx:id="colPendUsuario" text="Usuario" prefWidth="120"/>
+                        <TableColumn fx:id="colPendEmail" text="Email" prefWidth="200"/>
+                        <TableColumn fx:id="colPendFecha" text="Fecha Registro" prefWidth="150"/>
+                        <TableColumn fx:id="colPendAcciones" text="Acciones" prefWidth="230"/>
+                    </columns>
+                </TableView>
+                
+                <!-- Mensaje si no hay pendientes -->
+                <VBox fx:id="vboxSinPendientes" alignment="CENTER" spacing="10" 
+                      style="-fx-background-color: #F0FDF4; -fx-background-radius: 10; -fx-padding: 30;"
+                      visible="false" managed="false">
+                    <Label text="✅" style="-fx-font-size: 48px;"/>
+                    <Label text="No hay solicitudes pendientes" 
+                           style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #16A34A;"/>
+                    <Label text="Todas las solicitudes han sido procesadas" 
+                           style="-fx-font-size: 14px; -fx-text-fill: #4ADE80;"/>
+                </VBox>
+                
+            </VBox>
+        </Tab>
+        
+        <!-- TAB 2: ORGANIZADORES ACTIVOS -->
+        <Tab text="✅ Organizadores Activos" fx:id="tabActivos">
+            <VBox spacing="20" style="-fx-padding: 30;">
+                
+                <!-- Header -->
+                <HBox alignment="CENTER_LEFT" spacing="15">
+                    <Label text="Organizadores Aprobados y Activos" 
+                           style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #5B21B6;"/>
+                    <Label fx:id="lblCantidadActivos" 
+                           text="(0)" 
+                           style="-fx-font-size: 18px; -fx-text-fill: #16A34A;"/>
+                </HBox>
+                
+                <!-- Tabla de activos -->
+                <TableView fx:id="tablaActivos" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colActNombre" text="Nombre Completo" prefWidth="200"/>
+                        <TableColumn fx:id="colActUsuario" text="Usuario" prefWidth="120"/>
+                        <TableColumn fx:id="colActEmail" text="Email" prefWidth="200"/>
+                        <TableColumn fx:id="colActUltimoAcceso" text="Último Acceso" prefWidth="150"/>
+                        <TableColumn fx:id="colActAcciones" text="Acciones" prefWidth="130"/>
+                    </columns>
+                </TableView>
+                
+            </VBox>
+        </Tab>
+        
+        <!-- TAB 3: GESTIÓN AVANZADA -->
+        <Tab text="Gestión Avanzada" fx:id="tabGestion">
+            <VBox spacing="30" alignment="CENTER" style="-fx-padding: 40;">
+                
+                <!-- Grid de opciones -->
+                <GridPane hgap="25" vgap="25" alignment="CENTER">
+                    
+                    <!-- Registrar Organizador Manualmente -->
+                    <VBox alignment="CENTER" spacing="15"
+                          style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand;"
+                          prefWidth="320" prefHeight="160"
+                          onMouseClicked="#abrirFormularioOrganizador"
+                          GridPane.rowIndex="0" GridPane.columnIndex="0">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+                        <Label text="👤 Registrar Organizador" 
+                               style="-fx-text-fill: #5B21B6; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+                        <Label text="Agregar un organizador manualmente al sistema" 
+                               style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-text-alignment: center;" 
+                               wrapText="true" 
+                               maxWidth="280"/>
+                    </VBox>
+                    
+                    <!-- Listar Todos -->
+                    <VBox alignment="CENTER" spacing="15"
+                          style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand;"
+                          prefWidth="320" prefHeight="160"
+                          onMouseClicked="#listarOrganizadores"
+                          GridPane.rowIndex="0" GridPane.columnIndex="1">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+                        <Label text="📋 Listar Organizadores" 
+                               style="-fx-text-fill: #5B21B6; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+                        <Label text="Ver lista completa con clasificaciones y experiencia" 
+                               style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-text-alignment: center;" 
+                               wrapText="true" 
+                               maxWidth="280"/>
+                    </VBox>
+                    
+                    <!-- Buscar Organizador -->
+                    <VBox alignment="CENTER" spacing="15"
+                          style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand;"
+                          prefWidth="320" prefHeight="160"
+                          onMouseClicked="#buscarOrganizador"
+                          GridPane.rowIndex="1" GridPane.columnIndex="0">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+                        <Label text="🔍 Buscar Organizador" 
+                               style="-fx-text-fill: #5B21B6; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+                        <Label text="Buscar por nombre, email o experiencia" 
+                               style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-text-alignment: center;" 
+                               wrapText="true" 
+                               maxWidth="280"/>
+                    </VBox>
+                    
+                    <!-- Historial Completo -->
+                    <VBox alignment="CENTER" spacing="15"
+                          style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand;"
+                          prefWidth="320" prefHeight="160"
+                          onMouseClicked="#verHistorialCompleto"
+                          GridPane.rowIndex="1" GridPane.columnIndex="1">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+                        <Label text="📊 Historial Completo" 
+                               style="-fx-text-fill: #5B21B6; -fx-font-size: 18px; -fx-font-weight: bold;"/>
+                        <Label text="Ver todos los estados y filtrar por criterios" 
+                               style="-fx-text-fill: #666666; -fx-font-size: 12px; -fx-text-alignment: center;" 
+                               wrapText="true" 
+                               maxWidth="280"/>
+                    </VBox>
+                    
+                </GridPane>
+                
+            </VBox>
+        </Tab>
+        
+    </TabPane>
+    
+    <!-- FOOTER -->
+    <HBox alignment="CENTER" spacing="20" 
+          style="-fx-background-color: linear-gradient(to right, #8B5CF6, #5B21B6); -fx-padding: 20;">
+        <Button text="⬅ Volver a Menú Principal" 
+                onAction="#volverMenuPrincipal"
+                style="-fx-background-color: white; -fx-text-fill: #5B21B6; -fx-font-size: 14px; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 12 30; -fx-background-radius: 20;"/>
+        
+        <Region HBox.hgrow="ALWAYS"/>
+        
+        <Label text="Event Planner © 2025 - Universidad Popular del Cesar" 
+               style="-fx-text-fill: white; -fx-font-size: 12px;"/>
+    </HBox>
+    
+</VBox>

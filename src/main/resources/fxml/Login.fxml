@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17" 
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="presentacion.controllers.LoginController"
+           style="-fx-background-color: linear-gradient(to bottom right, #5B21B6, #7C3AED);">
+    
+    <ScrollPane fitToWidth="true" fitToHeight="true" 
+                style="-fx-background: transparent; -fx-background-color: transparent;"
+                hbarPolicy="NEVER" vbarPolicy="AS_NEEDED">
+        
+        <StackPane>
+            <VBox alignment="CENTER" spacing="25" maxWidth="450">
+                <padding>
+                    <Insets top="40" right="40" bottom="40" left="40"/>
+                </padding>
+                
+                <!-- LOGO Y TÍTULO -->
+                <VBox alignment="CENTER" spacing="15"
+                    style="-fx-background-color: white; -fx-background-radius: 20 20 0 0; -fx-padding: 30;">
+                    
+                    <!-- Logo de la aplicación -->
+                    <ImageView fitWidth="200" fitHeight="200" preserveRatio="true">
+                        <image>
+                            <Image url="@images/logo.png" />
+                        </image>
+                    </ImageView>
+                    
+                    <Label text="Sistema de Gestión de Eventos" 
+                           style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #7B1FA2;"/>
+                </VBox>
+                
+                <!-- FORMULARIO DE LOGIN -->
+                <VBox spacing="20" 
+                      style="-fx-background-color: white; -fx-background-radius: 0 0 20 20; -fx-padding: 30;">
+                    
+                    <Label text="Iniciar Sesion" 
+                           style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
+                    
+                    <!-- Usuario -->
+                    <VBox spacing="8">
+                        <Label text="Usuario" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #555555;"/>
+                        <HBox spacing="10" alignment="CENTER_LEFT"
+                              style="-fx-background-color: #F5F5F5; -fx-background-radius: 8; -fx-padding: 12;">
+                            <Label text="👤" style="-fx-font-size: 20px;"/>
+                            <TextField fx:id="txtUsuario" 
+                                       promptText="Ingrese su usuario"
+                                       style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px;"
+                                       prefWidth="300"
+                                       onAction="#handleLogin"/>
+                        </HBox>
+                    </VBox>
+                    
+                    <!-- Contraseña -->
+                    <VBox spacing="8">
+                        <Label text="Contrasena" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-text-fill: #555555;"/>
+                        <HBox spacing="10" alignment="CENTER_LEFT"
+                              style="-fx-background-color: #F5F5F5; -fx-background-radius: 8; -fx-padding: 12;">
+                            <Label text="🔒" style="-fx-font-size: 20px;"/>
+                            <PasswordField fx:id="txtContrasena" 
+                                           promptText="Ingrese su contrasena"
+                                           style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px;"
+                                           prefWidth="300"
+                                           onAction="#handleLogin"/>
+                        </HBox>
+                    </VBox>
+                    
+                    <!-- Mensaje de error -->
+                    <Label fx:id="lblError" 
+                           text="" 
+                           style="-fx-text-fill: #F44336; -fx-font-size: 12px; -fx-font-weight: bold;"
+                           wrapText="true"
+                           visible="false"/>
+                    
+                    <!-- Botón Login -->
+                    <Button text="Iniciar Sesion" 
+                            onAction="#handleLogin"
+                            style="-fx-background-color: linear-gradient(to bottom, #5B21B6, #7C3AED); -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 15; -fx-cursor: hand;"
+                            prefWidth="Infinity"
+                            defaultButton="true"/>
+                    
+                    <Separator/>
+                    
+                    <!-- Botón Registro -->
+                    <HBox alignment="CENTER" spacing="5">
+                        <Label text="¿No tienes cuenta?" style="-fx-font-size: 12px; -fx-text-fill: #666666;"/>
+                        <Hyperlink text="Registrate aqui" 
+                                   onAction="#abrirRegistro"
+                                   style="-fx-font-size: 12px; -fx-text-fill: #5B21B6; -fx-font-weight: bold;"/>
+                    </HBox>
+                    
+                </VBox>
+                
+                <!-- FOOTER -->
+                <VBox alignment="CENTER" spacing="5">
+                    <Label text="Universidad Popular del Cesar" 
+                           style="-fx-text-fill: white; -fx-font-size: 11px;"/>
+                    <Label text="Programacion de Computadores II - 2025" 
+                           style="-fx-text-fill: white; -fx-font-size: 11px;"/>
+                </VBox>
+                
+            </VBox>
+        </StackPane>
+        
+    </ScrollPane>
+    
+</StackPane>

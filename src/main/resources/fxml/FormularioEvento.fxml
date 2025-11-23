@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="presentacion.controllers.FormularioEventoController"
+            style="-fx-background-color: #F5F5F5;"> 
+    
+    <!-- ENCABEZADO CON DEGRADADO MORADO -->
+    <top>
+        <VBox alignment="CENTER" spacing="10" 
+              style="-fx-background-color: linear-gradient(to bottom, #5B21B6, #7C3AED); -fx-padding: 30;">
+            <Label text="📅 Nuevo Evento" 
+                   style="-fx-text-fill: white; -fx-font-size: 36px; -fx-font-weight: bold;"/>
+            <Label text="Complete todos los campos del formulario" 
+                   style="-fx-text-fill: #E9D5FF; -fx-font-size: 14px;"/>
+        </VBox>
+    </top>
+    
+    <!-- FORMULARIO -->
+    <center>
+        <ScrollPane fitToWidth="true" 
+                    style="-fx-background: transparent; -fx-background-color: transparent;"
+                    hbarPolicy="NEVER">
+            <VBox spacing="20" style="-fx-background-color: white; -fx-padding: 30;">
+                
+                <!-- Nombre del Evento -->
+                <VBox spacing="8">
+                    <Label text="Nombre del Evento *" 
+                           style="-fx-text-fill: #5B21B6; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                    <TextField fx:id="txtNombre" 
+                               promptText="Ej: Conferencia de IA 2025"
+                               style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-padding: 12; -fx-font-size: 13px;"/>
+                </VBox>
+                
+                <!-- Descripción -->
+                <VBox spacing="8">
+                    <Label text="Descripción (mínimo 10 caracteres) *" 
+                           style="-fx-text-fill: #5B21B6; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                    <TextArea fx:id="txtDescripcion" 
+                              promptText="Describe el evento..."
+                              wrapText="true" 
+                              prefRowCount="3"
+                              style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-padding: 12; -fx-font-size: 13px;"/>
+                </VBox>
+                
+                <!-- Tipo de Evento -->
+                <VBox spacing="8">
+                    <Label text="Tipo de Evento *" 
+                           style="-fx-text-fill: #5B21B6; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                    <ComboBox fx:id="cboTipoEvento" 
+                              promptText="Seleccione el tipo"
+                              prefWidth="300"
+                              style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-font-size: 13px;"/>
+                </VBox>
+                
+                <!-- Fechas -->
+                <HBox spacing="20">
+                    <VBox spacing="8" HBox.hgrow="ALWAYS">
+                        <Label text="Fecha y Hora de Inicio *" 
+                               style="-fx-text-fill: #5B21B6; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <DatePicker fx:id="dpFechaInicio" 
+                                   promptText="Seleccione fecha"
+                                   style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0;"/>
+                        <TextField fx:id="txtHoraInicio" 
+                                  promptText="HH:mm (ej: 10:00)"
+                                  style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-padding: 12; -fx-font-size: 13px;"/>
+                    </VBox>
+                    
+                    <VBox spacing="8" HBox.hgrow="ALWAYS">
+                        <Label text="Fecha y Hora de Fin *" 
+                               style="-fx-text-fill: #5B21B6; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <DatePicker fx:id="dpFechaFin" 
+                                   promptText="Seleccione fecha"
+                                   style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0;"/>
+                        <TextField fx:id="txtHoraFin" 
+                                  promptText="HH:mm (ej: 18:00)"
+                                  style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-padding: 12; -fx-font-size: 13px;"/>
+                    </VBox>
+                </HBox>
+                
+                <!-- Ubicación -->
+                <VBox spacing="8">
+                    <Label text="Ubicación *" 
+                           style="-fx-text-fill: #5B21B6; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                    <TextField fx:id="txtUbicacion" 
+                              promptText="Ej: Auditorio Principal"
+                              style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-padding: 12; -fx-font-size: 13px;"/>
+                </VBox>
+                
+                <!-- Capacidad -->
+                <VBox spacing="8">
+                    <Label text="Capacidad Máxima *" 
+                           style="-fx-text-fill: #5B21B6; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                    <TextField fx:id="txtCapacidad" 
+                              promptText="Número de personas"
+                              style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-padding: 12; -fx-font-size: 13px;"/>
+                </VBox>
+                
+                <!-- Precios -->
+                <HBox spacing="20">
+                    <VBox spacing="8" HBox.hgrow="ALWAYS">
+                        <Label text="Precio General (COP) *" 
+                               style="-fx-text-fill: #5B21B6; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <TextField fx:id="txtPrecioGeneral" 
+                                  promptText="0 = Gratis"
+                                  style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-padding: 12; -fx-font-size: 13px;"/>
+                    </VBox>
+                    
+                    <VBox spacing="8" HBox.hgrow="ALWAYS">
+                        <Label text="Precio VIP (COP)" 
+                               style="-fx-text-fill: #5B21B6; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <TextField fx:id="txtPrecioVIP" 
+                                  promptText="Dejar vacío = mismo precio"
+                                  style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-padding: 12; -fx-font-size: 13px;"/>
+                    </VBox>
+                </HBox>
+                
+                <!-- Organizador -->
+                <VBox spacing="8">
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Seleccionar Organizador *" 
+                               style="-fx-text-fill: #5B21B6; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <Label text="(ordenados por experiencia)" 
+                               style="-fx-text-fill: #666666; -fx-font-size: 11px;"/>
+                    </HBox>
+                    <ComboBox fx:id="cboOrganizador" 
+                              promptText="Seleccione el organizador del evento..."
+                              prefWidth="600"
+                              style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-font-size: 13px;"/>
+                    <Label text="💡 Si el organizador no aparece, regístrelo primero en Gestión de Organizadores" 
+                           style="-fx-text-fill: #7C3AED; -fx-font-size: 11px; -fx-padding: 5;"
+                           wrapText="true"/>
+                </VBox>
+                
+                <!-- Botones -->
+                <HBox spacing="20" alignment="CENTER" style="-fx-padding: 20 0 10 0;">
+                    <Button text="✅ Crear Evento" 
+                            onAction="#crearEvento"
+                            style="-fx-background-color: #5B21B6; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-padding: 15 40; -fx-background-radius: 10; -fx-cursor: hand;"/>
+                    
+                    <Button text="❌ Cancelar" 
+                            onAction="#cancelar"
+                            style="-fx-background-color: #9333EA; -fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold; -fx-padding: 15 40; -fx-background-radius: 10; -fx-cursor: hand;"/>
+                </HBox>
+                
+                <!-- Mensaje de estado -->
+                <Label fx:id="lblMensaje" 
+                       wrapText="true"
+                       visible="false"
+                       style="-fx-text-fill: #7C3AED; -fx-font-size: 13px; -fx-padding: 10; -fx-background-color: #F3E8FF; -fx-background-radius: 8; -fx-border-color: #7C3AED; -fx-border-radius: 8;"/>
+                
+            </VBox>
+        </ScrollPane>
+    </center>
+    
+    <!-- FOOTER -->
+    <bottom>
+        <HBox alignment="CENTER" 
+              style="-fx-background-color: linear-gradient(to right, #7C3AED, #5B21B6); -fx-padding: 15;">
+            <Label text="Event Planner © 2025 - Sistema de Gestión de Eventos" 
+                   style="-fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold;"/>
+        </HBox>
+    </bottom>
+</BorderPane>

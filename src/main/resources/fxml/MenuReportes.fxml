@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="presentacion.controllers.MenuReportesController"
+      spacing="30" 
+      alignment="CENTER"
+      style="-fx-background-color: linear-gradient(to bottom, #BBDEFB, #E3F2FD);"
+      prefWidth="900" 
+      prefHeight="700">
+    
+    <padding>
+        <Insets top="40" right="50" bottom="40" left="50"/>
+    </padding> 
+    
+    <!-- ENCABEZADO CON DEGRADADO -->
+    <VBox alignment="CENTER" spacing="10"
+          style="-fx-background-color: linear-gradient(to bottom, #1565C0, #1976D2); -fx-background-radius: 15; -fx-padding: 30;">
+        <Label text="📊Reportes y Estadísticas" 
+               style="-fx-text-fill: white; -fx-font-size: 42px; -fx-font-weight: bold;"/>
+        <Label text="Análisis y métricas del sistema Event Planner" 
+               style="-fx-text-fill: #E3F2FD; -fx-font-size: 16px;"/>
+    </VBox>
+    
+    <!-- GRID DE OPCIONES -->
+    <GridPane hgap="25" vgap="25" alignment="CENTER">
+        
+        <!-- Dashboard -->
+        <VBox alignment="CENTER" spacing="15"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand;"
+              prefWidth="350" prefHeight="180"
+              onMouseClicked="#abrirDashboard"
+              GridPane.rowIndex="0" GridPane.columnIndex="0">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label text="📈Dashboard Principal" 
+                   style="-fx-text-fill: #1565C0; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Métricas y estadísticas generales" 
+                   style="-fx-text-fill: #666666; -fx-font-size: 13px; -fx-text-alignment: center;" 
+                   wrapText="true" 
+                   maxWidth="300"/>
+        </VBox>
+        
+        <!-- Reportes de Eventos -->
+           <VBox alignment="CENTER" spacing="15"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand;"
+              prefWidth="350" prefHeight="180"
+              onMouseClicked="#abrirReportesEventos"
+              GridPane.rowIndex="0" GridPane.columnIndex="1">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label text="📅Reportes de Eventos" 
+                   style="-fx-text-fill: #1565C0; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Análisis detallado de eventos y asistencia" 
+                   style="-fx-text-fill: #666666; -fx-font-size: 13px; -fx-text-alignment: center;" 
+                   wrapText="true" 
+                   maxWidth="300"/>
+        </VBox>
+        
+        <!-- Reportes Financieros -->
+        <VBox alignment="CENTER" spacing="15"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand;"
+              prefWidth="350" prefHeight="180"
+              onMouseClicked="#abrirReportesFinancieros"
+              GridPane.rowIndex="1" GridPane.columnIndex="0">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Label text="💰Reportes Financieros" 
+                   style="-fx-text-fill: #1565C0; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Análisis de ingresos y comisiones" 
+                   style="-fx-text-fill: #666666; -fx-font-size: 13px; -fx-text-alignment: center;" 
+                   wrapText="true" 
+                   maxWidth="300"/>
+        </VBox>
+       
+        <!-- Exportar Reportes -->
+        <VBox alignment="CENTER" spacing="15"
+              style="-fx-background-color: white; -fx-background-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 3); -fx-cursor: hand;"
+              prefWidth="350" prefHeight="180"
+              onMouseClicked="#abrirExportarReportes"
+              GridPane.rowIndex="1" GridPane.columnIndex="1">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+             <Label text="📄Exportar Reportes" 
+                   style="-fx-text-fill: #1565C0; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Label text="Genera reportes en TXT, CSV o PDF" 
+                   style="-fx-text-fill: #666666; -fx-font-size: 13px; -fx-text-alignment: center;" 
+                   wrapText="true" 
+                   maxWidth="300"/>
+        </VBox>
+    </GridPane>
+    
+    
+    <!-- BOTÓN VOLVER -->
+    <Button text="⬅Volver a Menú Principal" 
+            onAction="#volverMenuPrincipal"
+            style="-fx-background-color: #1565C0; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 15 40 15 40; -fx-background-radius: 25;"
+            prefWidth="300"/>
+    
+    <!-- FOOTER CON DEGRADADO -->
+    <VBox alignment="CENTER" spacing="5"
+          style="-fx-background-color: linear-gradient(to bottom, #1565C0, #1976D2); -fx-background-radius: 10; -fx-padding: 15;">
+        <Label text="Event Planner © 2025 - Sistema de Gestión de Eventos" 
+               style="-fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold;"/>
+    </VBox>
+    
+</VBox>

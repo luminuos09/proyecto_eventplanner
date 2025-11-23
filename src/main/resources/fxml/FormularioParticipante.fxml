@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="700.0" prefWidth="900.0" 
+            style="-fx-background-color: #F5F5F5;"
+            xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="presentacion.controllers.FormularioParticipanteController">
+    
+    <!-- ENCABEZADO CON DEGRADADO MORADO -->
+    <top>
+        <VBox alignment="CENTER" spacing="10"
+              style="-fx-background-color: linear-gradient(to bottom, #7C3AED, #9333EA); -fx-padding: 30;">
+            <Label text="👥Registrar Participante" 
+                   style="-fx-text-fill: white; -fx-font-size: 36px; -fx-font-weight: bold;"/>
+            <Label text="Complete los datos del participante" 
+                   style="-fx-text-fill: #E9D5FF; -fx-font-size: 14px;"/>
+        </VBox>
+    </top>
+    
+    <!-- CONTENIDO CENTRAL -->
+    <center>
+        <ScrollPane fitToHeight="true" fitToWidth="true" 
+                    style="-fx-background: transparent; -fx-background-color: transparent;"
+                    hbarPolicy="NEVER">
+            <VBox alignment="TOP_CENTER" spacing="20" style="-fx-padding: 30;">
+                
+                <!-- Formulario -->
+                <VBox maxWidth="700" spacing="20" 
+                      style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 40; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 15, 0, 0, 5);">
+                    
+                    <!-- SECCIÓN: DATOS PERSONALES -->
+                    <Label text="📋Datos Personales" 
+                           style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #7C3AED;"/>
+                    
+                    <Separator style="-fx-background-color: #E0E0E0;"/>
+                    
+                    <!-- Nombre completo -->
+                    <VBox spacing="8">
+                        <Label text="Nombre completo *" 
+                               style="-fx-text-fill: #7C3AED; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <TextField fx:id="txtNombre" 
+                                   promptText="Ej: Juan Carlos Pérez López"
+                                   style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-padding: 12; -fx-font-size: 13px;"/>
+                    </VBox>
+                    
+                    <!-- Email -->
+                    <VBox spacing="8">
+                        <Label text="Email *" 
+                               style="-fx-text-fill: #7C3AED; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <TextField fx:id="txtEmail" 
+                                   promptText="ejemplo@correo.com"
+                                   style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-padding: 12; -fx-font-size: 13px;"/>
+                    </VBox>
+                    
+                    <!-- Teléfono -->
+                    <VBox spacing="8">
+                        <Label text="Teléfono *" 
+                               style="-fx-text-fill: #7C3AED; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <TextField fx:id="txtTelefono" 
+                                   promptText="Ej: +57 300 123 4567"
+                                   style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-padding: 12; -fx-font-size: 13px;"/>
+                    </VBox>
+                    
+                    <!-- SECCIÓN: INFORMACIÓN PROFESIONAL -->
+                    <Label text="💼 Información Profesional" 
+                           style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #7C3AED; -fx-padding: 20 0 0 0;"/>
+                    
+                    <Separator style="-fx-background-color: #E0E0E0;"/>
+                    
+                    <!-- Empresa -->
+                    <VBox spacing="8">
+                        <Label text="Empresa / Institución" 
+                               style="-fx-text-fill: #7C3AED; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <TextField fx:id="txtEmpresa" 
+                                   promptText="Ej: Universidad Popular del Cesar"
+                                   style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-padding: 12; -fx-font-size: 13px;"/>
+                    </VBox>
+                    
+                    <!-- Cargo -->
+                    <VBox spacing="8">
+                        <Label text="Cargo / Rol" 
+                               style="-fx-text-fill: #7C3AED; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <TextField fx:id="txtCargo" 
+                                   promptText="Ej: Estudiante de Ingeniería"
+                                   style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-padding: 12; -fx-font-size: 13px;"/>
+                    </VBox>
+                    
+                    <!-- Intereses -->
+                    <VBox spacing="8">
+                        <Label text="Intereses / Áreas de interés" 
+                               style="-fx-text-fill: #7C3AED; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <TextArea fx:id="txtIntereses" 
+                                  prefRowCount="4" 
+                                  promptText="Describe tus intereses profesionales o áreas de especialización..." 
+                                  wrapText="true"
+                                  style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-padding: 12; -fx-font-size: 13px;"/>
+                    </VBox>
+                    
+                    <!-- SECCIÓN: OPCIONES ADICIONALES -->
+                    <Label text="Opciones Adicionales" 
+                           style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #7C3AED; -fx-padding: 20 0 0 0;"/>
+                    
+                    <Separator style="-fx-background-color: #E0E0E0;"/>
+                    
+                    <!-- CheckBox VIP -->
+                    <CheckBox fx:id="chkVip" 
+                              text="⭐ Marcar como Participante VIP"
+                              style="-fx-text-fill: #7C3AED; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                    
+                    <Label text="* Campos obligatorios" 
+                           style="-fx-text-fill: #9333EA; -fx-font-size: 12px; -fx-font-style: italic; -fx-padding: 10 0 0 0;"/>
+                    
+                    <!-- Label de mensaje -->
+                    <Label fx:id="lblMensaje" 
+                           visible="false" 
+                           wrapText="true"
+                           style="-fx-text-fill: #7C3AED; -fx-font-size: 13px; -fx-padding: 10; -fx-background-color: #F3E8FF; -fx-background-radius: 8; -fx-border-color: #7C3AED; -fx-border-radius: 8;"/>
+                    
+                    <!-- Botones -->
+                    <HBox alignment="CENTER" spacing="15" style="-fx-padding: 20 0 0 0;">
+                        <Button text="Guardar Participante" 
+                                onAction="#guardarParticipante"
+                                prefWidth="240"
+                                style="-fx-background-color: #7C3AED; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 12 20; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                        
+                        <Button text="Limpiar Formulario" 
+                                onAction="#limpiarFormulario"
+                                prefWidth="240"
+                                style="-fx-background-color: #9333EA; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 12 20; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                        
+                        <Button text="⬅Volver" 
+                                onAction="#volver"
+                                prefWidth="240"
+                                style="-fx-background-color: #A855F7; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 12 20; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                    </HBox>
+                    
+                </VBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+    
+    <!-- PIE DE PÁGINA -->
+    <bottom>
+        <HBox alignment="CENTER" 
+              style="-fx-background-color: linear-gradient(to right, #9333EA, #7C3AED); -fx-padding: 15;">
+            <Label text="Event Planner © 2025 - Sistema de Gestión de Eventos" 
+                   style="-fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold;"/>
+        </HBox>
+    </bottom>
+    
+</BorderPane>

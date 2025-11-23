@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="presentacion.controllers.BuscarEventoController"
+            prefHeight="700.0" prefWidth="900.0"
+            style="-fx-background-color: #F5F5F5;">
+    
+    <!-- ENCABEZADO -->
+    <top>
+        <VBox alignment="CENTER" spacing="10" 
+              style="-fx-background-color: linear-gradient(to bottom, #5B21B6, #7C3AED); -fx-padding: 30;">
+            <Label text="🔍 Buscar Eventos" 
+                   style="-fx-text-fill: white; -fx-font-size: 36px; -fx-font-weight: bold;"/>
+            <Label text="Encuentra eventos por diferentes criterios" 
+                   style="-fx-text-fill: #E9D5FF; -fx-font-size: 14px;"/>
+        </VBox>
+    </top>
+    
+    <!-- CONTENIDO -->
+    <center>
+        <ScrollPane fitToWidth="true" 
+                    style="-fx-background: transparent; -fx-background-color: transparent;"
+                    hbarPolicy="NEVER">
+            <VBox spacing="25" style="-fx-padding: 30;">
+                
+                <!-- FORMULARIO DE BÚSQUEDA -->
+                <VBox spacing="20" 
+                      style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 15, 0, 0, 5);"
+                      maxWidth="700">
+                    
+                    <Label text="📋 Criterios de Búsqueda" 
+                           style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #5B21B6;"/>
+                    
+                    <Separator style="-fx-background-color: #E0E0E0;"/>
+                    
+                    <!-- Buscar por ID -->
+                    <VBox spacing="8">
+                        <Label text="🔢 Buscar por ID" 
+                               style="-fx-text-fill: #5B21B6; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <HBox spacing="10">
+                            <TextField fx:id="txtId" 
+                                       promptText="Ingrese el ID del evento"
+                                       HBox.hgrow="ALWAYS"
+                                       style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-padding: 10; -fx-font-size: 13px;"/>
+                            <Button text="🔍 Buscar" 
+                                    onAction="#buscarPorId"
+                                    style="-fx-background-color: #7C3AED; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 10 25; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                        </HBox>
+                    </VBox>
+                    
+                    <!-- Buscar por Nombre -->
+                    <VBox spacing="8">
+                        <Label text="📝 Buscar por Nombre" 
+                               style="-fx-text-fill: #5B21B6; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <HBox spacing="10">
+                            <TextField fx:id="txtNombre" 
+                                       promptText="Ingrese el nombre del evento"
+                                       HBox.hgrow="ALWAYS"
+                                       style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0; -fx-padding: 10; -fx-font-size: 13px;"/>
+                            <Button text="🔍 Buscar" 
+                                    onAction="#buscarPorNombre"
+                                    style="-fx-background-color: #7C3AED; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 10 25; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                        </HBox>
+                    </VBox>
+                    
+                    <!-- Buscar por Estado -->
+                    <VBox spacing="8">
+                        <Label text="📊 Buscar por Estado" 
+                               style="-fx-text-fill: #5B21B6; -fx-font-size: 14px; -fx-font-weight: bold;"/>
+                        <HBox spacing="10">
+                            <ComboBox fx:id="cmbEstado" 
+                                      promptText="Seleccione un estado"
+                                      HBox.hgrow="ALWAYS"
+                                      style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #E0E0E0;"/>
+                            <Button text="🔍 Buscar" 
+                                    onAction="#buscarPorEstado"
+                                    style="-fx-background-color: #7C3AED; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 10 25; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                        </HBox>
+                    </VBox>
+                    
+                    <!-- Botón Limpiar -->
+                    <HBox alignment="CENTER" style="-fx-padding: 10 0 0 0;">
+                        <Button text="Limpiar" 
+                                onAction="#limpiar"
+                                style="-fx-background-color: #9333EA; -fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 10 30; -fx-background-radius: 8; -fx-cursor: hand;"/>
+                    </HBox>
+                </VBox>
+                
+                <!-- RESULTADOS -->
+                <VBox spacing="15"
+                      style="-fx-background-color: white; -fx-background-radius: 15; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 15, 0, 0, 5);">
+                    
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="📋 Resultados" 
+                               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #5B21B6;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="lblTotal" 
+                               text="0 eventos encontrados"
+                               style="-fx-text-fill: #7C3AED; -fx-font-size: 13px; -fx-font-weight: bold;"/>
+                    </HBox>
+                    
+                    <TableView fx:id="tablaResultados" 
+                               VBox.vgrow="ALWAYS"
+                               prefHeight="300">
+                        <columns>
+                            <TableColumn fx:id="colNombre" text="Nombre" prefWidth="200"/>
+                            <TableColumn fx:id="colTipo" text="Tipo" prefWidth="120"/>
+                            <TableColumn fx:id="colFecha" text="Fecha" prefWidth="150"/>
+                            <TableColumn fx:id="colEstado" text="Estado" prefWidth="120"/>
+                            <TableColumn fx:id="colCapacidad" text="Capacidad" prefWidth="100"/>
+                            <TableColumn fx:id="colAcciones" text="Ver" prefWidth="110"/>
+                        </columns>
+                    </TableView>
+                    
+                </VBox>
+                
+            </VBox>
+        </ScrollPane>
+    </center>
+    
+    <!-- FOOTER -->
+    <bottom>
+        <HBox spacing="15" alignment="CENTER" 
+              style="-fx-background-color: linear-gradient(to right, #7C3AED, #5B21B6); -fx-padding: 15;">
+            <Button text="⬅ Volver" 
+                    onAction="#volver"
+                    style="-fx-background-color: white; -fx-text-fill: #5B21B6; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 12 30; -fx-background-radius: 20; -fx-cursor: hand;"/>
+        </HBox>
+    </bottom>
+    
+</BorderPane>

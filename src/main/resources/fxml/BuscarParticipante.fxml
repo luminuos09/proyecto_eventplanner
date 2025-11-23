@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<!--
+    Vista para buscar y visualizar información de participantes
+    Controlador: BuscarParticipanteController
+    
+    Estructura:
+    - Panel de búsqueda (ID, Email, Nombre)
+    - Panel de resultados múltiples (cuando busca por nombre)
+    - Panel de detalles del participante
+    - Tabla de eventos del participante
+-->
+
+<VBox xmlns="http://javafx.com/javafx/17" 
+      xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="presentacion.controllers.BuscarParticipanteController"
+      spacing="20" 
+      style="-fx-background-color: #f5f5f5;"
+      prefWidth="900" 
+      prefHeight="700">
+    
+    <padding>
+        <Insets top="20" right="30" bottom="20" left="30"/>
+    </padding>
+    
+    <!-- ========== ENCABEZADO ========== -->
+    <HBox alignment="CENTER" style="-fx-background-color: #7C3AEDff; -fx-background-radius: 10;">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+        <VBox alignment="CENTER" spacing="5">
+            <Label text="🔍Buscar Participante" 
+                   style="-fx-text-fill: white; -fx-font-size: 28px; -fx-font-weight: bold;"/>
+            <Label text="Encuentra información completa de cualquier participante" 
+                   style="-fx-text-fill: #e0e0e0; -fx-font-size: 14px;"/>
+        </VBox>
+    </HBox>
+    
+    <!-- ========== PANEL DE BÚSQUEDA ========== -->
+    <VBox spacing="15" 
+          style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+        
+        <Label text="🔎 Métodos de Búsqueda" 
+               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #7C3AED;"/>
+        
+        <Label text="Busque por ID (exacto), Email (exacto) o Nombre (parcial)" 
+               style="-fx-font-size: 12px; -fx-text-fill: #666666;"/>
+        
+        <!-- Grid de búsquedas -->
+        <GridPane hgap="15" vgap="15">
+            <!-- Búsqueda por ID -->
+            <Label text="Por ID:" 
+                   style="-fx-font-size: 14px; -fx-font-weight: bold;"
+                   GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtId" 
+                      promptText="Ej: PART001" 
+                      prefWidth="250"
+                      GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Button fx:id="btnBuscarId"
+                   text="Buscar" 
+                   onAction="#buscarPorId"
+                   style="-fx-background-color: #7C3AED; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;"
+                   prefWidth="100"
+                   GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+            
+            <!-- Búsqueda por Email -->
+            <Label text="Por Email:" 
+                   style="-fx-font-size: 14px; -fx-font-weight: bold;"
+                   GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtEmail" 
+                      promptText="Ej: juan@ejemplo.com" 
+                      prefWidth="250"
+                      GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Button fx:id="btnBuscarEmail"
+                   text="Buscar" 
+                   onAction="#buscarPorEmail"
+                   style="-fx-background-color: #7C3AED; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;"
+                   prefWidth="100"
+                   GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+            
+            <!-- Búsqueda por Nombre -->
+            <Label text="Por Nombre:" 
+                   style="-fx-font-size: 14px; -fx-font-weight: bold;"
+                   GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtNombre" 
+                      promptText="Ej: Juan (puede ser parcial)" 
+                      prefWidth="250"
+                      GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Button fx:id="btnBuscarNombre"
+                   text="Buscar" 
+                   onAction="#buscarPorNombre"
+                   style="-fx-background-color: #7C3AED; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;"
+                   prefWidth="100"
+                   GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+        </GridPane>
+    </VBox>
+    
+    <!-- ========== PANEL DE RESULTADOS MÚLTIPLES (Inicialmente oculto) ========== -->
+    <VBox fx:id="panelResultadosMultiples"
+          spacing="10" 
+          visible="false"
+          managed="false"
+          style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
+        <padding>
+            <Insets top="15" right="15" bottom="15" left="15"/>
+        </padding>
+        
+        <Label text="📊 Resultados de la Búsqueda" 
+               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #7C3AED;"/>
+        
+        <Label text="Se encontraron varios participantes. Seleccione uno para ver sus detalles." 
+               style="-fx-font-size: 12px; -fx-text-fill: #666666;"/>
+        
+        <TableView fx:id="tablaResultados" 
+                   prefHeight="200">
+            <columns>
+                <TableColumn fx:id="colResId" 
+                           text="ID" 
+                           prefWidth="100"/>
+                <TableColumn fx:id="colResNombre" 
+                           text="Nombre" 
+                           prefWidth="250"/>
+                <TableColumn fx:id="colResEmail" 
+                           text="Email" 
+                           prefWidth="220"/>
+                <TableColumn fx:id="colResEmpresa" 
+                           text="Empresa" 
+                           prefWidth="200"/>
+            </columns>
+            
+            <placeholder>
+                <Label text="No hay resultados" style="-fx-text-fill: #999999;"/>
+            </placeholder>
+        </TableView>
+    </VBox>
+    
+    <!-- ========== PANEL DE DETALLES DEL PARTICIPANTE (Inicialmente oculto) ========== -->
+    <VBox fx:id="panelResultados"
+          spacing="15" 
+          visible="false"
+          managed="false"
+          style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);"
+          VBox.vgrow="ALWAYS">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+        
+        <!-- Título de la sección -->
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="👤 Información del Participante" 
+                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #7C3AED;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="lblEstadoVip" 
+                   text="" 
+                   style="-fx-font-size: 14px;"/>
+        </HBox>
+        
+        <Separator/>
+        
+        <!-- Información personal en Grid -->
+        <GridPane hgap="15" vgap="12">
+            <!-- Nombre -->
+            <Label text="Nombre completo:" 
+                   style="-fx-font-size: 13px; -fx-text-fill: #666666;"
+                   GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Label fx:id="lblNombre" 
+                   text="" 
+                   style="-fx-font-size: 14px; -fx-font-weight: bold;"
+                   GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            
+            <!-- ID -->
+            <Label text="ID:" 
+                   style="-fx-font-size: 13px; -fx-text-fill: #666666;"
+                   GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Label fx:id="lblId" 
+                   text="" 
+                   style="-fx-font-size: 14px;"
+                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            
+            <!-- Email -->
+            <Label text="Email:" 
+                   style="-fx-font-size: 13px; -fx-text-fill: #666666;"
+                   GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <Label fx:id="lblEmail" 
+                   text="" 
+                   style="-fx-font-size: 14px;"
+                   GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            
+            <!-- Teléfono -->
+            <Label text="Teléfono:" 
+                   style="-fx-font-size: 13px; -fx-text-fill: #666666;"
+                   GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <Label fx:id="lblTelefono" 
+                   text="" 
+                   style="-fx-font-size: 14px;"
+                   GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            
+            <!-- Empresa -->
+            <Label text="Empresa:" 
+                   style="-fx-font-size: 13px; -fx-text-fill: #666666;"
+                   GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+            <Label fx:id="lblEmpresa" 
+                   text="" 
+                   style="-fx-font-size: 14px;"
+                   GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+            
+            <!-- Cargo -->
+            <Label text="Cargo:" 
+                   style="-fx-font-size: 13px; -fx-text-fill: #666666;"
+                   GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+            <Label fx:id="lblCargo" 
+                   text="" 
+                   style="-fx-font-size: 14px;"
+                   GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+            
+            <!-- Intereses -->
+            <Label text="Intereses:" 
+                   style="-fx-font-size: 13px; -fx-text-fill: #666666;"
+                   GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+            <Label fx:id="lblIntereses" 
+                   text="" 
+                   style="-fx-font-size: 14px;"
+                   wrapText="true"
+                   maxWidth="250"
+                   GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+            
+            <!-- Fecha de registro -->
+            <Label text="Registrado desde:" 
+                   style="-fx-font-size: 13px; -fx-text-fill: #666666;"
+                   GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+            <Label fx:id="lblFechaRegistro" 
+                   text="" 
+                   style="-fx-font-size: 14px;"
+                   GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+        </GridPane>
+        
+        <Separator/>
+        
+        <!-- Eventos del participante -->
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="📅 Eventos Inscritos" 
+                   style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #7C3AED;"/>
+            <Label text="(" style="-fx-font-size: 14px;"/>
+            <Label fx:id="lblTotalEventos" 
+                   text="0" 
+                   style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2196F3;"/>
+            <Label text="eventos)" style="-fx-font-size: 14px;"/>
+        </HBox>
+        
+        <TableView fx:id="tablaEventos" 
+                   VBox.vgrow="ALWAYS"
+                   prefHeight="200">
+            <columns>
+                <TableColumn fx:id="colNombre" 
+                           text="Nombre del Evento" 
+                           prefWidth="280"/>
+                <TableColumn fx:id="colTipo" 
+                           text="Tipo" 
+                           prefWidth="120"/>
+                <TableColumn fx:id="colFecha" 
+                           text="Fecha" 
+                           prefWidth="130"/>
+                <TableColumn fx:id="colEstado" 
+                           text="Estado" 
+                           prefWidth="110"/>
+                <TableColumn fx:id="colAsistencia" 
+                           text="Asistió" 
+                           prefWidth="80"/>
+            </columns>
+            
+            <placeholder>
+                <Label text="Este participante no tiene eventos inscritos" 
+                       style="-fx-text-fill: #999999;"/>
+            </placeholder>
+        </TableView>
+    </VBox>
+    
+    <!-- ========== BOTONES DE ACCIÓN ========== -->
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="Nueva Búsqueda" 
+                onAction="#limpiar"
+                style="-fx-background-color: #7C3AED; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 12 30 12 30;"
+                minWidth="180"/>
+        
+        <Button text="Cerrar" 
+                onAction="#cerrar"
+                style="-fx-background-color: #7C3AED; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-cursor: hand; -fx-padding: 12 30 12 30;"
+                minWidth="180"/>
+    </HBox>
+    
+</VBox>
